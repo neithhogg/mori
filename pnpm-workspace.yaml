@@ -1,0 +1,4 @@
+packages:
+  # Product repos can be added here as the suite grows
+  # e.g. - '../shiftmate'
+  # e.g. - '../faxbridge'
