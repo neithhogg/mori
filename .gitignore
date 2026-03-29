@@ -1,0 +1,45 @@
+# IDEs
+.idea/
+.vscode/
+*.iml
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+._*
+
+# Logs and temp
+*.log
+tmp/
+.tmp/
+
+# Env
+.env
+.env.local
+.env.*.local
+*.env
+
+# Node / TypeScript / Next.js
+node_modules/
+dist/
+.next/
+out/
+*.tsbuildinfo
+.turbo/
+.vercel/
+
+# Build outputs
+build/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Package manager
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Sentry
+.sentryclirc

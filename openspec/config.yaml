@@ -1,0 +1,141 @@
+# Mori Design System — OpenSpec Configuration
+# 森 デザインシステム
+# -----------------------------------------------
+# This config is injected into every OpenSpec artifact Claude Code generates.
+# Keep it accurate — it is the single source of truth for Claude Code context.
+
+schema: spec-driven
+
+context: |
+  # Project
+  Name: Mori Design System (森, mori = forest)
+  Role: Shared design language, component library, and development standards
+        for all products in the Mori product suite.
+  Owner: Albert (Yokohama, Japan)
+  Repo: github.com/albert/mori
+
+  # Products that extend Mori DS
+  ShiftMate (シフトメイト)
+    - Shift scheduling SaaS for small Japanese restaurants and retail shops
+    - Pricing: ¥1,980/month
+    - Repo: github.com/albert/shiftmate
+    - Key integration: LINE Messaging API
+
+  FaxBridge (ファックスブリッジ)
+    - Fax-to-digital automation for small manufacturers and wholesalers
+    - Pricing: ¥5,000–10,000/month
+    - Repo: github.com/albert/faxbridge
+    - Key integration: Claude Vision API (OCR + extraction)
+
+  # Tech stack — Web (Phase 1)
+  Framework:    Next.js 14 (App Router, Server Components by default)
+  Language:     TypeScript — strict mode, no `any`, explicit return types
+  Styling:      Tailwind CSS v3 + CSS custom properties for all design tokens
+  Components:   shadcn/ui, customised to Mori spec
+  Icons:        Lucide React
+  Database:     Supabase (PostgreSQL + Auth + RLS + Storage)
+  Payments:     Stripe (Billing, Checkout, Webhooks)
+  Deployment:   Vercel
+  Email:        Resend
+  Errors:       Sentry
+  Analytics:    PostHog + Vercel Analytics
+
+  # Tech stack — iOS (Phase 2, after Web validation)
+  Framework:    SwiftUI
+  Language:     Swift 5.9+
+  Tokens:       All Mori design tokens mapped 1:1 from web CSS variables
+  Typography:   SF Pro (system font, no custom fonts)
+  Backend:      Shared Next.js API routes — no separate iOS backend
+
+  # Design philosophy
+  Three words: Shizen. Kantan. Shinrai.
+               自然 · 簡単 · 信頼
+               Natural · Simple · Trustworthy
+
+  Target user: Japanese small business owners (restaurants, retail, manufacturing).
+  Not tech-savvy. Primarily on smartphones. Skeptical of new software.
+  Goal: Zero learning curve. Open and immediately understand how to use it.
+
+  # Core design constraints (non-negotiable)
+  - NEVER hardcode hex values or px values — always reference a CSS variable token
+  - Mobile-first: design for 390px viewport width before desktop
+  - One primary action per page — never overwhelm the user
+  - All user-facing text in Japanese
+  - Touch targets minimum 44×44px on mobile
+  - No complex animations in MVP — transitions only (200ms ease-in-out)
+  - Bottom tab bar on mobile (≤768px), left sidebar on desktop (≥768px)
+
+  # Key design tokens (reference these by name in all artifacts)
+  --color-brand:          #2D7A4F   (森緑, primary green)
+  --color-brand-light:    #EAF3DE   (light tint)
+  --color-brand-dark:     #1A5C38   (hover/pressed)
+  --color-ink:            #1A1A1A   (森黒, primary text)
+  --color-ink-secondary:  #4A4A4A
+  --color-ink-tertiary:   #8A8A8A
+  --color-surface:        #FFFFFF   (card background)
+  --color-surface-raised: #F5F3EF   (和紙, page background)
+  --color-surface-sunken: #EDEBE6   (input background)
+  --color-border:         #E8E4DC   (砂, default border)
+  --color-border-strong:  #C8C4BC
+  --color-error:          #EF4444
+  --color-warning:        #F59E0B
+  --color-success:        #22C55E
+  --color-info:           #3B82F6
+  --radius-sm:   6px    (badges, tags)
+  --radius-md:   8px    (buttons, inputs)
+  --radius-lg:   12px   (cards)
+  --radius-xl:   16px   (modals, sheets)
+
+  # Japanese UI conventions
+  - Actions end in する: 保存する・削除する・追加する (not 保存・削除)
+  - Loading: 処理中...
+  - Success: ✓ 保存しました
+  - Error: エラーが発生しました。もう一度お試しください。
+  - Empty states: soft and friendly — まだデータがありません (not データなし)
+  - Confirmations: destructive action always on the RIGHT
+    e.g. [キャンセル] [削除する]
+  - Dates: 2025年1月28日(火) via Intl.DateTimeFormat('ja-JP')
+  - Currency: ¥1,980 (no decimals, comma separator)
+  - Time: 24-hour format — 09:00, 17:30
+
+  # File and folder conventions
+  File names:     kebab-case (shift-table.tsx)
+  Components:     PascalCase (ShiftTable)
+  Functions:      camelCase (getShiftsByDate)
+  Constants:      SCREAMING_SNAKE_CASE (MAX_STAFF_PER_SHIFT)
+  Types:          PascalCase, descriptive (ShiftEntry not Shift)
+  Comments:       English, explain WHY not WHAT
+
+  # Compliance (Japan — required before charging users)
+  - 特定商取引法に基づく表記 (Specified Commercial Transactions page)
+  - プライバシーポリシー (Privacy Policy — 個人情報保護法)
+  - 利用規約 (Terms of Service)
+  All three pages generated in Japanese by Claude before launch.
+
+rules:
+  proposal:
+    - State clearly: does this change affect Web only, iOS only, or both platforms?
+    - State clearly: does this change affect Mori DS only, ShiftMate, FaxBridge, or all?
+    - Include a one-line summary of the user-visible change in Japanese
+    - If adding a new component, note which existing shadcn/ui base it extends
+    - Include rollback plan for any breaking token or component changes
+
+  specs:
+    - Use Given/When/Then format for every scenario
+    - Include at least one mobile scenario (390px viewport) per feature
+    - Include the Japanese UI copy for all new user-facing strings
+    - For components: specify all interactive states (default, hover, focus, disabled, error)
+    - For tokens: specify both light mode and dark mode values if applicable
+
+  design:
+    - Reference Mori design tokens by CSS variable name, never by hex value
+    - Specify mobile layout before desktop layout
+    - For new components: describe the shadcn/ui base and what is customised
+    - For API routes: specify request shape, response shape, and error responses
+    - Note if iOS token mapping is needed and what the SwiftUI equivalent is
+
+  tasks:
+    - Group tasks in this order: tokens → components → page integration → tests → docs
+    - Tag iOS tasks with [iOS] — these are Phase 2, not required for Web MVP
+    - Every component task must include: implement + add to Storybook/docs + write tests
+    - Definition of done: TypeScript compiles with no errors, no `any` types, mobile layout verified

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "skills": {
+    "git-commit": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "2607fc60629b82b257136dd2a7a373f0a4466c0b49df7746d845d59313c99b21"
+    },
+    "nextjs-app-router-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "d2f0a7065f7418fdb3ae88559f1f1426f40c26f2b5aebcd394797418d4bb3b04"
+    },
+    "project-config": {
+      "source": "git@github.com:neithhogg/lair.git",
+      "sourceType": "git",
+      "computedHash": "7b0bc6e3b7dc6b617b51751e2cbe726d5ef86e15cb3772d2856eb5b7b6faf4ff"
+    },
+    "project-init": {
+      "source": "git@github.com:neithhogg/lair.git",
+      "sourceType": "git",
+      "computedHash": "8477615d7062b667d7b9a4ab9e593666e9524bab018c88237d1d2b97ae37a5db"
+    },
+    "project-sync": {
+      "source": "git@github.com:neithhogg/lair.git",
+      "sourceType": "git",
+      "computedHash": "22c6910f60ffe690c1fd1e03c50e05e33d46786e08adae6b3cf68112f4a042f3"
+    },
+    "supabase-postgres-best-practices": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "computedHash": "9c87c315aed143ee3b34bec8117100f5035e0df09e6b23e1ecc772cff434c9ad"
+    },
+    "typescript-advanced-types": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "3a3be8c925f96ac4e1280db28a01677e7ca5197f3792de2bbf35ab3bb324b6dd"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "bbc31a48537b473ff4feea6360ef0de3bfdcbef26c14f4967a5deefe8ca801d3"
+    }
+  }
+}
