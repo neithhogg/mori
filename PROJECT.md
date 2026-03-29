@@ -339,6 +339,51 @@ toast.info('新しいシフトリクエストがあります')  // blue — 4000
 // No warning toasts — use inline form errors instead
 ```
 
+### Dialog
+
+```tsx
+type DialogVariant = 'default' | 'confirm'
+
+// Overlay — covers full viewport behind the panel
+overlay: 'fixed inset-0 bg-black/40 backdrop-blur-sm z-50
+          flex items-center justify-center
+          transition-opacity duration-200'
+
+// Panel — desktop centered, mobile bottom-sheet (see Rules)
+base:   'relative bg-[--color-surface] border border-[--color-border]
+         rounded-[--radius-xl] shadow-[--shadow-lg]
+         w-full max-w-md mx-4
+         transition-all duration-200 ease-out'
+
+header: 'px-6 pt-6 pb-2'
+  title:    'text-lg font-[--font-semibold] text-[--color-ink]'
+  subtitle: 'mt-1 text-sm text-[--color-ink-secondary]'
+
+body:   'px-6 py-4 text-sm text-[--color-ink-secondary] leading-relaxed'
+
+footer: 'px-6 pb-6 pt-2 flex justify-end gap-3'
+
+// Confirm variant — cancel left, action right (Japanese convention)
+confirm-footer: 'px-6 pb-6 pt-2 flex justify-end gap-3'
+  cancel:      <Button variant="secondary">キャンセル</Button>
+  action:      <Button variant="primary | destructive">{label}する</Button>
+
+// Mobile bottom-sheet variant (< 768px)
+mobile-panel: 'fixed bottom-0 left-0 right-0
+               rounded-t-[--radius-xl] rounded-b-none
+               transition-transform duration-300 ease-out'
+```
+
+**Rules:**
+- Destructive actions always require a confirm dialog — never a toast
+- Confirm dialog: cancel on the left, destructive action on the right — always
+- Destructive body must include: `この操作は取り消せません。`
+- Close triggers: ESC key, overlay click — except `disableOutsideClose` on destructive confirms
+- Focus must be trapped inside an open dialog; restored to trigger element on close
+- On mobile (< 768px): render as bottom sheet sliding up from the bottom edge
+- Loading state on confirm: show `処理中...` on the action button; disable both buttons
+- Always set `aria-labelledby` pointing to the dialog title element
+
 ---
 
 ## Page Layout System
