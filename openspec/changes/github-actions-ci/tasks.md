@@ -13,14 +13,14 @@
 
 These steps must be completed manually by a repository admin after the workflow file is merged and at least one CI run has completed (so the check names are registered with GitHub).
 
-- [ ] 2.1 Go to the repository on GitHub → **Settings** → **Branches**
-- [ ] 2.2 Click **Add branch protection rule**
-- [ ] 2.3 Set **Branch name pattern** to `main`
-- [ ] 2.4 Enable **Require a pull request before merging**
-- [ ] 2.5 Enable **Require status checks to pass before merging**
-- [ ] 2.6 Search for and add required status checks: `Test`, `Lint`, `Typecheck`, `Format`
-- [ ] 2.7 Enable **Require branches to be up to date before merging**
-- [ ] 2.8 Click **Save changes**
+- [x] 2.1 Go to the repository on GitHub → **Settings** → **Branches**
+- [x] 2.2 Click **Add branch protection rule**
+- [x] 2.3 Set **Branch name pattern** to `main`
+- [x] 2.4 Enable **Require a pull request before merging**
+- [x] 2.5 Enable **Require status checks to pass before merging**
+- [x] 2.6 Search for and add required status checks: `Test`, `Lint`, `Typecheck`, `Format`
+- [x] 2.7 Enable **Require branches to be up to date before merging**
+- [x] 2.8 Click **Save changes**
 
 ## 3. Verification
 
