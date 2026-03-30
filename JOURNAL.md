@@ -36,3 +36,32 @@ Two products are being built simultaneously (ShiftMate and FaxBridge), making a 
 - iOS app (SwiftUI) in Phase 2, after web validation, with design tokens mapped 1:1 from Mori web tokens
 - Additional products beyond ShiftMate and FaxBridge can be bootstrapped directly from this document
 - Potential extraction of Mori DS components into a standalone package if the product suite grows significantly
+
+---
+
+## 2026-03-30 — Design tokens implemented
+
+### What was done
+
+All 57 CSS custom properties from PROJECT.md are now implemented as a single importable CSS file at `src/tokens/globals.css`. This is the foundational layer — no Mori component or product stylesheet should ever hardcode a hex value or px value; everything goes through these tokens.
+
+Token groups: colour (19), typography (13), spacing (10), radius (5), shadows (3), motion (6).
+
+### How products consume the tokens
+
+In a product's `app/globals.css`:
+
+```css
+@import '../path/to/mori/src/tokens/globals.css';
+```
+
+Once the design system is published as a proper npm package, this will become:
+
+```css
+@import '@mori/design-system/tokens';
+```
+
+### Verification
+
+- 65 Vitest assertions pass — covering file existence, all 6 token groups, every token name, total count, and a regex check that no hex values appear outside `:root`
+- `pnpm typecheck` and `pnpm lint` both exit clean
