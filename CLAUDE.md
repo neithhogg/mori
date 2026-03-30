@@ -13,18 +13,32 @@ Mori Design System (森, *mori* = forest) is a shared design language and compon
 ## Commands
 
 ### Build
-not detected
+not applicable — this repo is a design system specification, not a runnable application
 
 ### Test
-not detected
+```bash
+pnpm test
+```
 
 ### Lint
-not detected
+```bash
+pnpm lint        # check
+pnpm lint:fix    # auto-fix
+```
+
+### Typecheck
+```bash
+pnpm typecheck
+```
+
+### Format
+```bash
+pnpm format        # write
+pnpm format:check  # check only
+```
 
 ### Run / Start
-not detected
-
-*This repo is a design system specification, not a runnable application. Individual products (ShiftMate, FaxBridge) have their own repos with build commands.*
+not applicable — individual products (ShiftMate, FaxBridge) have their own repos and dev servers
 
 ## Architecture
 
@@ -69,4 +83,4 @@ This repo is the single source of truth for the Mori umbrella. `PROJECT.md` defi
 - i18n for languages other than Japanese
 
 ## Last Updated
-2026-03-29
+2026-03-30
