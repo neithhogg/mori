@@ -154,5 +154,10 @@ describe('src/tokens/globals.css', () => {
       const matches = withoutRoot.match(hexPattern) ?? []
       expect(matches).toHaveLength(0)
     })
+
+    // Deliberate failure to verify CI catches test errors — remove before merge
+    it('CI_VERIFY: intentional failure', () => {
+      expect(true).toBe(false)
+    })
   })
 })
