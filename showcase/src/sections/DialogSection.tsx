@@ -26,7 +26,7 @@ function DialogPreview({
         boxShadow: 'var(--shadow-lg)',
       }}
     >
-      <div className="px-6 pt-6 pb-2">
+      <div className="px-6 pb-2 pt-6">
         <p className="text-base font-semibold" style={{ color: 'var(--color-ink)' }}>
           {title}
         </p>
@@ -36,13 +36,10 @@ function DialogPreview({
           </p>
         )}
       </div>
-      <div
-        className="px-6 py-4 text-sm leading-relaxed"
-        style={{ color: 'var(--color-ink-secondary)' }}
-      >
+      <div className="px-6 py-4 text-sm leading-relaxed" style={{ color: 'var(--color-ink-secondary)' }}>
         {children}
       </div>
-      <div className="flex justify-end gap-3 px-6 pt-2 pb-6">{footer}</div>
+      <div className="flex justify-end gap-3 px-6 pb-6 pt-2">{footer}</div>
     </div>
   )
 }
@@ -72,32 +69,18 @@ export function DialogSection(): JSX.Element {
             編集内容がここに表示されます。
           </DialogPreview>
           <div className="flex items-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setDefaultOpen(true)
-              }}
-            >
+            <Button variant="ghost" size="sm" onClick={() => { setDefaultOpen(true) }}>
               ライブデモを開く →
             </Button>
           </div>
         </div>
         <Dialog
           open={defaultOpen}
-          onClose={() => {
-            setDefaultOpen(false)
-          }}
+          onClose={() => { setDefaultOpen(false) }}
           title="シフトを編集"
           subtitle="2024年3月15日（金）の変更内容を確認してください。"
           footer={
-            <Button
-              onClick={() => {
-                setDefaultOpen(false)
-              }}
-            >
-              保存する
-            </Button>
+            <Button onClick={() => { setDefaultOpen(false) }}>保存する</Button>
           }
         >
           <p>編集フォームの内容がここに入ります。</p>
@@ -120,28 +103,18 @@ export function DialogSection(): JSX.Element {
             保存されていない変更があります。このまま続けると変更が失われます。
           </DialogPreview>
           <div className="flex items-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setConfirmOpen(true)
-              }}
-            >
+            <Button variant="ghost" size="sm" onClick={() => { setConfirmOpen(true) }}>
               ライブデモを開く →
             </Button>
           </div>
         </div>
         <Dialog
           open={confirmOpen}
-          onClose={() => {
-            setConfirmOpen(false)
-          }}
+          onClose={() => { setConfirmOpen(false) }}
           variant="confirm"
           title="変更を保存しますか？"
           actionLabel="保存する"
-          onAction={() => {
-            setConfirmOpen(false)
-          }}
+          onAction={() => { setConfirmOpen(false) }}
         >
           保存されていない変更があります。このまま続けると変更が失われます。
         </Dialog>
@@ -168,29 +141,19 @@ export function DialogSection(): JSX.Element {
             田中 花子 さんのアカウントと全データが完全に削除されます。
           </DialogPreview>
           <div className="flex items-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setDestructiveOpen(true)
-              }}
-            >
+            <Button variant="ghost" size="sm" onClick={() => { setDestructiveOpen(true) }}>
               ライブデモを開く →
             </Button>
           </div>
         </div>
         <Dialog
           open={destructiveOpen}
-          onClose={() => {
-            setDestructiveOpen(false)
-          }}
+          onClose={() => { setDestructiveOpen(false) }}
           variant="confirm"
           title="スタッフを削除"
           actionLabel="削除する"
           destructive
-          onAction={() => {
-            setDestructiveOpen(false)
-          }}
+          onAction={() => { setDestructiveOpen(false) }}
         >
           田中 花子 さんのアカウントと全データが完全に削除されます。
         </Dialog>
@@ -214,29 +177,19 @@ export function DialogSection(): JSX.Element {
             クレジットカード情報を処理しています。しばらくお待ちください。
           </DialogPreview>
           <div className="flex items-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                setLoadingOpen(true)
-              }}
-            >
+            <Button variant="ghost" size="sm" onClick={() => { setLoadingOpen(true) }}>
               ライブデモを開く →
             </Button>
           </div>
         </div>
         <Dialog
           open={loadingOpen}
-          onClose={() => {
-            setLoadingOpen(false)
-          }}
+          onClose={() => { setLoadingOpen(false) }}
           variant="confirm"
           title="請求情報を更新中"
           actionLabel="更新する"
           isLoading
-          onAction={() => {
-            setLoadingOpen(false)
-          }}
+          onAction={() => { setLoadingOpen(false) }}
         >
           クレジットカード情報を処理しています。しばらくお待ちください。
         </Dialog>

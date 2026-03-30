@@ -13,7 +13,7 @@ export function App(): JSX.Element {
   return (
     <div className="flex min-h-screen">
       <ShowcaseSidebar />
-      <main className="max-w-[900px] flex-1 px-16 py-12">
+      <main className="flex-1 px-16 py-12 max-w-[900px]">
         <ShowcaseHeader />
         <ButtonSection />
         <InputSection />

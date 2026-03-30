@@ -1,7 +1,14 @@
 import { useState, type JSX } from 'react'
 import { BottomTabBar, Sidebar } from '@mori/components/ui/navigation'
 import type { TabItem, SidebarNavItem } from '@mori/components/ui/navigation'
-import { Home, Calendar, Users, FileText, Settings, Bell } from 'lucide-react'
+import {
+  Home,
+  Calendar,
+  Users,
+  FileText,
+  Settings,
+  Bell,
+} from 'lucide-react'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
 
@@ -28,24 +35,20 @@ export function NavigationSection(): JSX.Element {
   const sidebarItems = SIDEBAR_ITEMS.map((item) => ({
     ...item,
     isActive: item.key === activeSidebar,
-    onClick: () => {
-      setActiveSidebar(item.key)
-    },
+    onClick: () => { setActiveSidebar(item.key) },
   }))
 
   const tabItems = TAB_ITEMS.map((item) => ({
     ...item,
     isActive: item.key === activeTab,
-    onClick: () => {
-      setActiveTab(item.key)
-    },
+    onClick: () => { setActiveTab(item.key) },
   }))
 
   return (
     <SectionWrapper id="navigation" num="07" titleEn="Navigation" titleJa="ナビゲーション">
       <VarBlock label="Sidebar — Desktop (≥768px)">
         <div
-          className="w-[240px] overflow-hidden rounded-xl"
+          className="w-[240px] rounded-xl overflow-hidden"
           style={{ border: '1px solid var(--color-border)' }}
         >
           <Sidebar items={sidebarItems} />
@@ -59,7 +62,7 @@ export function NavigationSection(): JSX.Element {
           className="relative overflow-hidden rounded-xl"
           style={{ border: '1px solid var(--color-border)' }}
         >
-          <BottomTabBar items={tabItems} className="!relative !rounded-xl !border-t-0" />
+          <BottomTabBar items={tabItems} className="!relative !border-t-0 !rounded-xl" />
         </div>
         <p className="mt-3 text-xs" style={{ color: 'var(--color-ink-tertiary)' }}>
           ※ 実際の使用時は画面下部に固定されます（position: fixed）

@@ -16,7 +16,10 @@ export function SectionWrapper({
   children,
 }: SectionWrapperProps): JSX.Element {
   return (
-    <section id={id} className="mb-20 scroll-mt-8">
+    <section
+      id={id}
+      className="mb-20 scroll-mt-8"
+    >
       <div className="mb-8 flex items-baseline gap-4">
         <span
           className="font-mono text-xs font-semibold"
@@ -25,10 +28,16 @@ export function SectionWrapper({
           {num}
         </span>
         <div>
-          <h2 className="text-xl leading-none font-semibold" style={{ color: 'var(--color-ink)' }}>
+          <h2
+            className="text-xl font-semibold leading-none"
+            style={{ color: 'var(--color-ink)' }}
+          >
             {titleEn}
           </h2>
-          <p className="mt-1 text-xs" style={{ color: 'var(--color-ink-tertiary)' }}>
+          <p
+            className="mt-1 text-xs"
+            style={{ color: 'var(--color-ink-tertiary)' }}
+          >
             {titleJa}
           </p>
         </div>

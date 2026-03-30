@@ -4,7 +4,7 @@ import type { BadgeVariant } from '@mori/components/ui/badge'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
 
-const BADGES: { variant: BadgeVariant; label: string; desc: string }[] = [
+const BADGES: Array<{ variant: BadgeVariant; label: string; desc: string }> = [
   { variant: 'green', label: '承認済', desc: 'green — success' },
   { variant: 'amber', label: '保留中', desc: 'amber — warning' },
   { variant: 'red', label: 'エラー', desc: 'red — error' },
@@ -29,24 +29,9 @@ export function BadgeSection(): JSX.Element {
       <VarBlock label="In Context — シフト申請一覧">
         <div className="space-y-3">
           {[
-            {
-              name: '田中 花子',
-              shift: '月 09:00–17:00',
-              status: '承認済' as const,
-              variant: 'green' as BadgeVariant,
-            },
-            {
-              name: '鈴木 一郎',
-              shift: '火 10:00–18:00',
-              status: '保留中' as const,
-              variant: 'amber' as BadgeVariant,
-            },
-            {
-              name: '山田 次郎',
-              shift: '水 08:00–16:00',
-              status: 'エラー' as const,
-              variant: 'red' as BadgeVariant,
-            },
+            { name: '田中 花子', shift: '月 09:00–17:00', status: '承認済' as const, variant: 'green' as BadgeVariant },
+            { name: '鈴木 一郎', shift: '火 10:00–18:00', status: '保留中' as const, variant: 'amber' as BadgeVariant },
+            { name: '山田 次郎', shift: '水 08:00–16:00', status: 'エラー' as const, variant: 'red' as BadgeVariant },
           ].map((row) => (
             <div
               key={row.name}

@@ -62,13 +62,13 @@ export function ButtonSection(): JSX.Element {
             <thead>
               <tr>
                 <th
-                  className="pr-4 pb-3 text-left text-xs font-medium"
+                  className="pb-3 pr-4 text-left text-xs font-medium"
                   style={{ color: 'var(--color-ink-tertiary)' }}
                 />
                 {SIZES.map((s) => (
                   <th
                     key={s}
-                    className="pr-6 pb-3 text-left text-xs font-medium"
+                    className="pb-3 pr-6 text-left text-xs font-medium"
                     style={{ color: 'var(--color-ink-tertiary)' }}
                   >
                     {s}
