@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Mori Design System — shared design language for ShiftMate and FaxBridge",
+  "packageManager": "pnpm@10.7.0",
   "engines": {
     "node": ">=22",
     "pnpm": ">=9"
