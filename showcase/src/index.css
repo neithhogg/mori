@@ -1,0 +1,15 @@
+@import "../../src/tokens/globals.css";
+@import "tailwindcss";
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Override token fonts with Japanese web fonts for the showcase */
+:root {
+  --font-display: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+}
