@@ -46,6 +46,26 @@ pnpm format:check  # check only
 
 not applicable — individual products (ShiftMate, FaxBridge) have their own repos and dev servers
 
+## OpenSpec CLI
+
+This repo uses `@fission-ai/openspec` for spec-driven change management (`/opsx:*` skills).
+
+**Before running any `/opsx:*` skill or `openspec` command, verify the CLI is installed:**
+
+```bash
+pnpm exec openspec --version 2>/dev/null || pnpm add -D @fission-ai/openspec
+```
+
+If the install warning says "Ignored build scripts", add to `package.json` under the `"pnpm"` key:
+
+```json
+"pnpm": {
+  "onlyBuiltDependencies": ["@fission-ai/openspec", "esbuild"]
+}
+```
+
+Then re-run `pnpm install`. Suppress telemetry noise with `OPENSPEC_TELEMETRY=0`.
+
 ## Architecture
 
 This repo is the single source of truth for the Mori umbrella. `PROJECT.md` defines all tokens, component specs, layout patterns, and Japanese localisation rules. `openspec/` contains OpenSpec change proposals. `JOURNAL.md` tracks decisions and history. Product repos extend this document via their own `PROJECT.md`.
