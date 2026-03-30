@@ -1,4 +1,5 @@
 node_modules/
 .agents/
 openspec/
+dist/
 pnpm-lock.yaml

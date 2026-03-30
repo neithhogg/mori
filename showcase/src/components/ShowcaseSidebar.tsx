@@ -33,7 +33,7 @@ export function ShowcaseSidebar(): JSX.Element {
 
   return (
     <aside
-      className="sticky top-0 h-screen w-[256px] shrink-0 flex flex-col overflow-y-auto"
+      className="sticky top-0 flex h-screen w-[256px] shrink-0 flex-col overflow-y-auto"
       style={{
         background: 'var(--color-surface)',
         borderRight: '1px solid var(--color-border)',
@@ -41,10 +41,7 @@ export function ShowcaseSidebar(): JSX.Element {
       }}
     >
       {/* Brand */}
-      <div
-        className="px-6 py-6"
-        style={{ borderBottom: '1px solid var(--color-border)' }}
-      >
+      <div className="px-6 py-6" style={{ borderBottom: '1px solid var(--color-border)' }}>
         <div className="flex items-center gap-3">
           <div
             className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold text-white"
@@ -54,7 +51,7 @@ export function ShowcaseSidebar(): JSX.Element {
           </div>
           <div>
             <p
-              className="text-sm font-semibold leading-none"
+              className="text-sm leading-none font-semibold"
               style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink)' }}
             >
               Mori DS
@@ -69,7 +66,7 @@ export function ShowcaseSidebar(): JSX.Element {
       {/* Nav */}
       <nav className="flex-1 p-3 pt-5">
         <p
-          className="px-3 pb-3 text-[0.625rem] font-semibold uppercase tracking-[0.14em]"
+          className="px-3 pb-3 text-[0.625rem] font-semibold tracking-[0.14em] uppercase"
           style={{ color: 'var(--color-ink-tertiary)' }}
         >
           コンポーネント一覧
@@ -80,7 +77,7 @@ export function ShowcaseSidebar(): JSX.Element {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors duration-150 no-underline"
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm no-underline transition-colors duration-150"
               style={{
                 background: isActive ? 'var(--color-brand-light)' : 'transparent',
                 color: isActive ? 'var(--color-brand-dark)' : 'var(--color-ink-secondary)',
@@ -95,7 +92,7 @@ export function ShowcaseSidebar(): JSX.Element {
                 {item.num}
               </span>
               <span>
-                <span className="block font-medium leading-none">{item.en}</span>
+                <span className="block leading-none font-medium">{item.en}</span>
                 <span
                   className="mt-0.5 block text-[0.625rem] leading-none"
                   style={{ color: isActive ? 'var(--color-brand)' : 'var(--color-ink-tertiary)' }}

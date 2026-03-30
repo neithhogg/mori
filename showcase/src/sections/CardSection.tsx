@@ -9,22 +9,13 @@ export function CardSection(): JSX.Element {
       <VarBlock label="base — Default Surface">
         <div className="max-w-xs">
           <Card>
-            <p
-              className="mb-1 text-sm font-semibold"
-              style={{ color: 'var(--color-ink)' }}
-            >
+            <p className="mb-1 text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
               今月の売上
             </p>
-            <p
-              className="text-2xl font-bold tabular-nums"
-              style={{ color: 'var(--color-brand)' }}
-            >
+            <p className="text-2xl font-bold tabular-nums" style={{ color: 'var(--color-brand)' }}>
               ¥1,280,000
             </p>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'var(--color-ink-tertiary)' }}
-            >
+            <p className="mt-1 text-xs" style={{ color: 'var(--color-ink-tertiary)' }}>
               前月比 +12.4%
             </p>
           </Card>
@@ -35,16 +26,10 @@ export function CardSection(): JSX.Element {
         <div className="grid max-w-sm grid-cols-2 gap-3">
           {['青山店', '渋谷店'].map((name) => (
             <Card key={name} variant="interactive">
-              <p
-                className="text-sm font-semibold"
-                style={{ color: 'var(--color-ink)' }}
-              >
+              <p className="text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
                 {name}
               </p>
-              <p
-                className="mt-1 text-xs"
-                style={{ color: 'var(--color-ink-tertiary)' }}
-              >
+              <p className="mt-1 text-xs" style={{ color: 'var(--color-ink-tertiary)' }}>
                 スタッフ 8名
               </p>
             </Card>
@@ -56,10 +41,7 @@ export function CardSection(): JSX.Element {
         <div className="max-w-xs">
           <Card variant="highlighted">
             <div className="flex items-center justify-between">
-              <p
-                className="text-sm font-semibold"
-                style={{ color: 'var(--color-ink)' }}
-              >
+              <p className="text-sm font-semibold" style={{ color: 'var(--color-ink)' }}>
                 プレミアムプラン
               </p>
               <span
