@@ -16,7 +16,14 @@
     "test": "vitest run",
     "preinstall": "npx only-allow pnpm"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@fission-ai/openspec",
+      "esbuild"
+    ]
+  },
   "devDependencies": {
+    "@fission-ai/openspec": "^1.2.0",
     "@types/node": "^22.0.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.0.0",

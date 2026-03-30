@@ -30,5 +30,5 @@ export default tseslint.config(
       // No console.log in committed code
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
-  },
+  }
 )
