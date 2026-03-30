@@ -2,12 +2,12 @@
 
 ## 1. Workflow File
 
-- [ ] 1.1 Create `.github/` and `.github/workflows/` directories
-- [ ] 1.2 Create `.github/workflows/ci.yml` with trigger on `pull_request` (opened, synchronize, reopened) and `push` to `main`
-- [ ] 1.3 Add `test` job: checkout → setup pnpm 9 → setup Node 22 with pnpm cache → `pnpm install --frozen-lockfile` → `pnpm test`
-- [ ] 1.4 Add `lint` job: same steps → `pnpm lint`
-- [ ] 1.5 Add `typecheck` job: same steps → `pnpm typecheck`
-- [ ] 1.6 Add `format` job: same steps → `pnpm format:check`
+- [x] 1.1 Create `.github/` and `.github/workflows/` directories
+- [x] 1.2 Create `.github/workflows/ci.yml` with trigger on `pull_request` (opened, synchronize, reopened) and `push` to `main`
+- [x] 1.3 Add `test` job: checkout → setup pnpm 9 → setup Node 22 with pnpm cache → `pnpm install --frozen-lockfile` → `pnpm test`
+- [x] 1.4 Add `lint` job: same steps → `pnpm lint`
+- [x] 1.5 Add `typecheck` job: same steps → `pnpm typecheck`
+- [x] 1.6 Add `format` job: same steps → `pnpm format:check`
 
 ## 2. Branch Protection (Manual — GitHub UI)
 
