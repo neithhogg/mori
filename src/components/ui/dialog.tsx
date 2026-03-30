@@ -114,7 +114,7 @@ export function Dialog(props: DialogProps): JSX.Element {
             'pointer-events-auto relative w-full bg-[--color-surface]',
             'border border-[--color-border] shadow-[--shadow-lg]',
             // Mobile: bottom sheet — slides up from bottom edge
-            'rounded-t-[--radius-xl] rounded-b-none',
+            'rounded-b-none rounded-t-[--radius-xl]',
             // Desktop: centered card
             'md:max-w-md md:rounded-[--radius-xl]',
             className
@@ -125,8 +125,8 @@ export function Dialog(props: DialogProps): JSX.Element {
           }}
         >
           {/* Header */}
-          <div className="px-6 pt-6 pb-2">
-            <h2 id={titleId} className="font-[--font-semibold] text-lg text-[--color-ink]">
+          <div className="px-6 pb-2 pt-6">
+            <h2 id={titleId} className="text-lg font-[--font-semibold] text-[--color-ink]">
               {title}
             </h2>
             {subtitle !== undefined && (
@@ -146,7 +146,7 @@ export function Dialog(props: DialogProps): JSX.Element {
           {/* Footer */}
           {isConfirm ? (
             // Confirm footer: キャンセル on the left, action on the right (Japanese convention)
-            <div className="flex justify-end gap-3 px-6 pt-2 pb-6">
+            <div className="flex justify-end gap-3 px-6 pb-6 pt-2">
               <Button variant="secondary" disabled={props.isLoading === true} onClick={onClose}>
                 キャンセル
               </Button>
@@ -160,7 +160,7 @@ export function Dialog(props: DialogProps): JSX.Element {
             </div>
           ) : (
             props.footer !== undefined && (
-              <div className="flex justify-end gap-3 px-6 pt-2 pb-6">{props.footer}</div>
+              <div className="flex justify-end gap-3 px-6 pb-6 pt-2">{props.footer}</div>
             )
           )}
         </div>

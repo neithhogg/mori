@@ -27,7 +27,7 @@ export function BottomTabBar({ items, className }: BottomTabBarProps): JSX.Eleme
     <nav
       aria-label="タブナビゲーション"
       className={cn(
-        'fixed right-0 bottom-0 left-0 h-[60px]',
+        'fixed bottom-0 left-0 right-0 h-[60px]',
         'border-t border-[--color-border] bg-[--color-surface]',
         'flex items-stretch',
         className
