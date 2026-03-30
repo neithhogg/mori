@@ -24,7 +24,7 @@ These steps must be completed manually by a repository admin after the workflow 
 
 ## 3. Verification
 
-- [ ] 3.1 Push the branch containing `.github/workflows/ci.yml` and open a pull request — confirm four CI checks appear in the PR checks section
+- [x] 3.1 Push the branch containing `.github/workflows/ci.yml` and open a pull request — confirm four CI checks appear in the PR checks section
 - [ ] 3.2 Confirm all four checks pass on a clean branch
 - [ ] 3.3 Push a branch with a deliberate test failure — confirm the `Test` check fails and the PR cannot merge (after branch protection is configured)
 - [ ] 3.4 Confirm the `Lint`, `Typecheck`, and `Format` checks pass independently of the failing `Test` check

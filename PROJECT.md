@@ -1,4 +1,5 @@
 # Mori Design System
+
 # 森 デザインシステム
 
 > **This document is the single source of truth for all products built under the Mori umbrella.**
@@ -8,11 +9,11 @@
 
 ## Purpose
 
-Mori Design System (森, *mori* = forest in Japanese) is a shared design language and component framework built for a suite of SaaS products targeting the Japanese small business market. Every design decision must reduce friction, build trust, and feel immediately familiar — not impressive or clever.
+Mori Design System (森, _mori_ = forest in Japanese) is a shared design language and component framework built for a suite of SaaS products targeting the Japanese small business market. Every design decision must reduce friction, build trust, and feel immediately familiar — not impressive or clever.
 
 **Design Philosophy — Three Words**
 **Shizen. Kantan. Shinrai.**
-自然・簡単・信頼 — *Natural. Simple. Trustworthy.*
+自然・簡単・信頼 — _Natural. Simple. Trustworthy._
 
 ---
 
@@ -24,9 +25,9 @@ Japanese small business owners — restaurants, retail shops, manufacturers, and
 
 ## Products
 
-| Product | Description | Status |
-|---|---|---|
-| **ShiftMate** (シフトメイト) | Shift scheduling SaaS for small restaurants & retail | 🟡 In development |
+| Product                            | Description                                               | Status            |
+| ---------------------------------- | --------------------------------------------------------- | ----------------- |
+| **ShiftMate** (シフトメイト)       | Shift scheduling SaaS for small restaurants & retail      | 🟡 In development |
 | **FaxBridge** (ファックスブリッジ) | Fax-to-digital automation for manufacturers & wholesalers | 🟡 In development |
 
 ---
@@ -57,19 +58,19 @@ Japanese small business owners — restaurants, retail shops, manufacturers, and
 
 ## Tech Stack
 
-| Layer | Choice | Rationale |
-|---|---|---|
-| Language | TypeScript (strict) | Catches token misuse at compile time across shared components |
-| Framework | Next.js 14 (App Router) | Server Components reduce client JS — critical for mobile on Japanese networks |
-| Styling | Tailwind CSS v3 + CSS Variables | CSS variables enable the token system shared and extended per product |
-| Components | shadcn/ui (Mori-customised) | Copy-paste model means Mori owns the customisations, no override fighting |
-| Database + Auth | Supabase (PostgreSQL + Auth + Storage) | Reduces moving parts for small team building two products simultaneously |
-| Hosting | Vercel | Zero-config Next.js; edge network reduces latency for Japan |
-| Payments | Stripe (Billing + Checkout) | Only mature processor with solid Japan support and yen handling |
-| Error tracking | Sentry | Catches production errors before Japanese SMB users abandon silently |
-| Analytics | PostHog + Vercel Analytics | PostHog for behavioural funnels; Vercel Analytics for Core Web Vitals |
-| Email | Resend | Clean API, good Japan deliverability, pairs with React Email |
-| Testing | Vitest + Playwright | Vitest for unit; Playwright for e2e with mobile viewport testing |
+| Layer           | Choice                                 | Rationale                                                                     |
+| --------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| Language        | TypeScript (strict)                    | Catches token misuse at compile time across shared components                 |
+| Framework       | Next.js 14 (App Router)                | Server Components reduce client JS — critical for mobile on Japanese networks |
+| Styling         | Tailwind CSS v3 + CSS Variables        | CSS variables enable the token system shared and extended per product         |
+| Components      | shadcn/ui (Mori-customised)            | Copy-paste model means Mori owns the customisations, no override fighting     |
+| Database + Auth | Supabase (PostgreSQL + Auth + Storage) | Reduces moving parts for small team building two products simultaneously      |
+| Hosting         | Vercel                                 | Zero-config Next.js; edge network reduces latency for Japan                   |
+| Payments        | Stripe (Billing + Checkout)            | Only mature processor with solid Japan support and yen handling               |
+| Error tracking  | Sentry                                 | Catches production errors before Japanese SMB users abandon silently          |
+| Analytics       | PostHog + Vercel Analytics             | PostHog for behavioural funnels; Vercel Analytics for Core Web Vitals         |
+| Email           | Resend                                 | Clean API, good Japan deliverability, pairs with React Email                  |
+| Testing         | Vitest + Playwright                    | Vitest for unit; Playwright for e2e with mobile viewport testing              |
 
 ---
 
@@ -102,33 +103,33 @@ All values are defined as CSS custom properties on `:root`. **Never hardcode hex
 ```css
 :root {
   /* === Brand === */
-  --color-brand:          #2D7A4F;   /* 森緑 — primary brand green */
-  --color-brand-light:    #EAF3DE;   /* light tint for backgrounds */
-  --color-brand-dark:     #1A5C38;   /* hover / pressed state */
+  --color-brand: #2d7a4f; /* 森緑 — primary brand green */
+  --color-brand-light: #eaf3de; /* light tint for backgrounds */
+  --color-brand-dark: #1a5c38; /* hover / pressed state */
 
   /* === Neutrals === */
-  --color-ink:            #1A1A1A;   /* 森黒 — primary text */
-  --color-ink-secondary:  #4A4A4A;   /* secondary text */
-  --color-ink-tertiary:   #8A8A8A;   /* placeholder, disabled */
+  --color-ink: #1a1a1a; /* 森黒 — primary text */
+  --color-ink-secondary: #4a4a4a; /* secondary text */
+  --color-ink-tertiary: #8a8a8a; /* placeholder, disabled */
 
   /* === Surfaces === */
-  --color-surface:        #FFFFFF;   /* card background */
-  --color-surface-raised: #F5F3EF;   /* 和紙 — page background */
-  --color-surface-sunken: #EDEBE6;   /* input background, inset */
+  --color-surface: #ffffff; /* card background */
+  --color-surface-raised: #f5f3ef; /* 和紙 — page background */
+  --color-surface-sunken: #edebe6; /* input background, inset */
 
   /* === Borders === */
-  --color-border:         #E8E4DC;   /* 砂 — default border */
-  --color-border-strong:  #C8C4BC;   /* focused / hover border */
+  --color-border: #e8e4dc; /* 砂 — default border */
+  --color-border-strong: #c8c4bc; /* focused / hover border */
 
   /* === Semantic === */
-  --color-info:           #3B82F6;   /* 水 — blue */
-  --color-info-light:     #EFF6FF;
-  --color-success:        #22C55E;   /* 若葉 — green */
-  --color-success-light:  #F0FDF4;
-  --color-warning:        #F59E0B;   /* 琥珀 — amber */
-  --color-warning-light:  #FFFBEB;
-  --color-error:          #EF4444;   /* 紅 — red */
-  --color-error-light:    #FEF2F2;
+  --color-info: #3b82f6; /* 水 — blue */
+  --color-info-light: #eff6ff;
+  --color-success: #22c55e; /* 若葉 — green */
+  --color-success-light: #f0fdf4;
+  --color-warning: #f59e0b; /* 琥珀 — amber */
+  --color-warning-light: #fffbeb;
+  --color-error: #ef4444; /* 紅 — red */
+  --color-error-light: #fef2f2;
 }
 ```
 
@@ -137,28 +138,29 @@ All values are defined as CSS custom properties on `:root`. **Never hardcode hex
 ```css
 :root {
   /* === Font Families === */
-  --font-sans:   'Geist', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
-                  'Yu Gothic', 'Meiryo', sans-serif;
-  --font-mono:   'Geist Mono', 'Osaka-Mono', monospace;
+  --font-sans:
+    'Geist', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-mono: 'Geist Mono', 'Osaka-Mono', monospace;
 
   /* === Type Scale === */
-  --text-xs:     0.75rem;    /* 12px — labels, captions */
-  --text-sm:     0.875rem;   /* 14px — secondary body */
-  --text-base:   1rem;       /* 16px — primary body */
-  --text-lg:     1.125rem;   /* 18px — large body */
-  --text-xl:     1.25rem;    /* 20px — small heading */
-  --text-2xl:    1.5rem;     /* 24px — heading */
-  --text-3xl:    1.875rem;   /* 30px — large heading */
-  --text-4xl:    2.25rem;    /* 36px — display */
+  --text-xs: 0.75rem; /* 12px — labels, captions */
+  --text-sm: 0.875rem; /* 14px — secondary body */
+  --text-base: 1rem; /* 16px — primary body */
+  --text-lg: 1.125rem; /* 18px — large body */
+  --text-xl: 1.25rem; /* 20px — small heading */
+  --text-2xl: 1.5rem; /* 24px — heading */
+  --text-3xl: 1.875rem; /* 30px — large heading */
+  --text-4xl: 2.25rem; /* 36px — display */
 
   /* === Font Weights === */
-  --font-normal:   400;
-  --font-medium:   500;
-  --font-semibold: 600;      /* use sparingly, headings only */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600; /* use sparingly, headings only */
 }
 ```
 
 **Rules:**
+
 - Body text: `--text-base`, `--font-normal`, line-height `1.7`
 - UI labels: `--text-sm`, `--font-medium`
 - Headings: `--font-semibold`, never bold (700) in UI
@@ -170,16 +172,16 @@ Uses an 8px base grid. All spacing values are multiples of 4px.
 
 ```css
 :root {
-  --space-1:   0.25rem;   /*  4px */
-  --space-2:   0.5rem;    /*  8px */
-  --space-3:   0.75rem;   /* 12px */
-  --space-4:   1rem;      /* 16px */
-  --space-5:   1.25rem;   /* 20px */
-  --space-6:   1.5rem;    /* 24px */
-  --space-8:   2rem;      /* 32px */
-  --space-10:  2.5rem;    /* 40px */
-  --space-12:  3rem;      /* 48px */
-  --space-16:  4rem;      /* 64px */
+  --space-1: 0.25rem; /*  4px */
+  --space-2: 0.5rem; /*  8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
 }
 ```
 
@@ -187,11 +189,11 @@ Uses an 8px base grid. All spacing values are multiples of 4px.
 
 ```css
 :root {
-  --radius-sm:   0.375rem;   /*  6px — badges, tags */
-  --radius-md:   0.5rem;     /*  8px — inputs, buttons */
-  --radius-lg:   0.75rem;    /* 12px — cards */
-  --radius-xl:   1rem;       /* 16px — modals, sheets */
-  --radius-full: 9999px;     /* pills */
+  --radius-sm: 0.375rem; /*  6px — badges, tags */
+  --radius-md: 0.5rem; /*  8px — inputs, buttons */
+  --radius-lg: 0.75rem; /* 12px — cards */
+  --radius-xl: 1rem; /* 16px — modals, sheets */
+  --radius-full: 9999px; /* pills */
 }
 ```
 
@@ -201,9 +203,9 @@ Minimal. Only use where elevation is semantically necessary.
 
 ```css
 :root {
-  --shadow-sm:  0 1px 2px 0 rgba(0,0,0,0.05);
-  --shadow-md:  0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-  --shadow-lg:  0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
 }
 ```
 
@@ -211,16 +213,17 @@ Minimal. Only use where elevation is semantically necessary.
 
 ```css
 :root {
-  --duration-fast:    100ms;
-  --duration-base:    200ms;
-  --duration-slow:    300ms;
-  --ease-default:     cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-in:          cubic-bezier(0.4, 0, 1, 1);
-  --ease-out:         cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 }
 ```
 
 **Rules:**
+
 - All interactive elements: `transition: all var(--duration-base) var(--ease-default)`
 - Page transitions: none in MVP
 - Loading states: skeleton shimmer only, no spinners
@@ -251,6 +254,7 @@ lg:   'h-12 px-6 text-base'
 ```
 
 **Rules:**
+
 - One primary button per page section maximum
 - Loading state: replace label with spinner icon + "処理中..." text
 - Destructive actions always require confirmation dialog
@@ -269,6 +273,7 @@ error: 'border-[--color-error] focus:border-[--color-error] focus:ring-[--color-
 ```
 
 Always pair with:
+
 - `<label>` above — `--text-sm`, `--font-medium`, `--color-ink-secondary`
 - Error message below — `--color-error`, `--text-xs`
 - Helper text below — `--color-ink-tertiary`, `--text-xs`
@@ -276,7 +281,7 @@ Always pair with:
 ### Card
 
 ```tsx
-base:        'bg-[--color-surface] border border-[--color-border] rounded-[--radius-lg] p-6'
+base: 'bg-[--color-surface] border border-[--color-border] rounded-[--radius-lg] p-6'
 interactive: base + ' cursor-pointer transition-shadow duration-200 hover:shadow-[--shadow-md]'
 highlighted: base + ' border-[--color-brand] border-2'
 ```
@@ -284,18 +289,19 @@ highlighted: base + ' border-[--color-brand] border-2'
 ### Badge / Tag
 
 ```tsx
-base:  'inline-flex items-center px-2 py-0.5 rounded-[--radius-sm] text-xs font-medium'
+base: 'inline-flex items-center px-2 py-0.5 rounded-[--radius-sm] text-xs font-medium'
 green: base + ' bg-[--color-success-light] text-[--color-success]'
 amber: base + ' bg-[--color-warning-light] text-[--color-warning]'
-red:   base + ' bg-[--color-error-light] text-[--color-error]'
-blue:  base + ' bg-[--color-info-light] text-[--color-info]'
-gray:  base + ' bg-[--color-surface-sunken] text-[--color-ink-secondary]'
+red: base + ' bg-[--color-error-light] text-[--color-error]'
+blue: base + ' bg-[--color-info-light] text-[--color-info]'
+gray: base + ' bg-[--color-surface-sunken] text-[--color-ink-secondary]'
 brand: base + ' bg-[--color-brand-light] text-[--color-brand-dark]'
 ```
 
 ### Navigation
 
 Mobile-first pattern:
+
 - Mobile (< 768px): Bottom tab bar, 4–5 items max
 - Desktop (≥ 768px): Left sidebar, collapsible
 
@@ -333,9 +339,9 @@ Primary CTA button (optional)
 Use `sonner` library (included in shadcn/ui setup).
 
 ```tsx
-toast.success('シフトを保存しました')          // green — 4000ms
-toast.error('エラーが発生しました')            // red — 6000ms
-toast.info('新しいシフトリクエストがあります')  // blue — 4000ms
+toast.success('シフトを保存しました') // green — 4000ms
+toast.error('エラーが発生しました') // red — 6000ms
+toast.info('新しいシフトリクエストがあります') // blue — 4000ms
 // No warning toasts — use inline form errors instead
 ```
 
@@ -375,6 +381,7 @@ mobile-panel: 'fixed bottom-0 left-0 right-0
 ```
 
 **Rules:**
+
 - Destructive actions always require a confirm dialog — never a toast
 - Confirm dialog: cancel on the left, destructive action on the right — always
 - Destructive body must include: `この操作は取り消せません。`
@@ -399,9 +406,9 @@ desktop:  ≥ 1024px
 ### Layout Containers
 
 ```tsx
-'min-h-screen bg-[--color-surface-raised]'           // page wrapper
-'max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8'      // content container
-'py-8 md:py-12'                                       // section spacing
+'min-h-screen bg-[--color-surface-raised]' // page wrapper
+'max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8' // content container
+'py-8 md:py-12' // section spacing
 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4' // card grid
 ```
 
@@ -457,17 +464,21 @@ Confirm:   本当に削除しますか？この操作は取り消せません。
 ```tsx
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('ja-JP', {
-    year: 'numeric', month: 'long', day: 'numeric', weekday: 'short'
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'short',
   }).format(date)
 // → 2025年1月28日(火)
 
-const formatYen = (amount: number) =>
-  `¥${amount.toLocaleString('ja-JP')}`
+const formatYen = (amount: number) => `¥${amount.toLocaleString('ja-JP')}`
 // → ¥1,980
 
 const formatTime = (date: Date) =>
   new Intl.DateTimeFormat('ja-JP', {
-    hour: '2-digit', minute: '2-digit', hour12: false
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
   }).format(date)
 // → 09:00
 ```
@@ -573,11 +584,11 @@ Naming:
 
 Required before accepting payments:
 
-| Page | Japanese Name | Required By |
-|---|---|---|
-| Privacy Policy | プライバシーポリシー | 個人情報保護法 |
-| Terms of Service | 利用規約 | Best practice |
-| Specified Commercial Transactions | 特定商取引法に基づく表記 | 特定商取引法 |
+| Page                              | Japanese Name            | Required By    |
+| --------------------------------- | ------------------------ | -------------- |
+| Privacy Policy                    | プライバシーポリシー     | 個人情報保護法 |
+| Terms of Service                  | 利用規約                 | Best practice  |
+| Specified Commercial Transactions | 特定商取引法に基づく表記 | 特定商取引法   |
 
 ---
 
@@ -587,9 +598,11 @@ Each product maintains its own `PROJECT.md` that imports this document and exten
 
 ```markdown
 # ShiftMate — PROJECT.md
+
 > Extends: Mori Design System PROJECT.md (read that first)
 
 ## Product-specific tokens
+
 --color-shift-morning: #FEF9C3;
 --color-shift-evening: #EDE9FE;
 ```
@@ -597,7 +610,8 @@ Each product maintains its own `PROJECT.md` that imports this document and exten
 ---
 
 ## Last Updated
+
 2026-03-29
 
-*Owner: Albert (横浜)*
-*Products: ShiftMate · FaxBridge · (future)*
+_Owner: Albert (横浜)_
+_Products: ShiftMate · FaxBridge · (future)_

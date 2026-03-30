@@ -17,88 +17,88 @@
      =================================================================== */
 
   /* Brand */
-  --color-brand:          #2D7A4F; /* 森緑 — primary brand green */
-  --color-brand-light:    #EAF3DE; /* light tint for backgrounds */
-  --color-brand-dark:     #1A5C38; /* hover / pressed state */
+  --color-brand: #2d7a4f; /* 森緑 — primary brand green */
+  --color-brand-light: #eaf3de; /* light tint for backgrounds */
+  --color-brand-dark: #1a5c38; /* hover / pressed state */
 
   /* Neutrals */
-  --color-ink:            #1A1A1A; /* 森黒 — primary text */
-  --color-ink-secondary:  #4A4A4A; /* secondary text */
-  --color-ink-tertiary:   #8A8A8A; /* placeholder, disabled */
+  --color-ink: #1a1a1a; /* 森黒 — primary text */
+  --color-ink-secondary: #4a4a4a; /* secondary text */
+  --color-ink-tertiary: #8a8a8a; /* placeholder, disabled */
 
   /* Surfaces */
-  --color-surface:        #FFFFFF; /* card background */
-  --color-surface-raised: #F5F3EF; /* 和紙 — page background */
-  --color-surface-sunken: #EDEBE6; /* input background, inset */
+  --color-surface: #ffffff; /* card background */
+  --color-surface-raised: #f5f3ef; /* 和紙 — page background */
+  --color-surface-sunken: #edebe6; /* input background, inset */
 
   /* Borders */
-  --color-border:         #E8E4DC; /* 砂 — default border */
-  --color-border-strong:  #C8C4BC; /* focused / hover border */
+  --color-border: #e8e4dc; /* 砂 — default border */
+  --color-border-strong: #c8c4bc; /* focused / hover border */
 
   /* Semantic — Info */
-  --color-info:           #3B82F6; /* 水 — blue */
-  --color-info-light:     #EFF6FF;
+  --color-info: #3b82f6; /* 水 — blue */
+  --color-info-light: #eff6ff;
 
   /* Semantic — Success */
-  --color-success:        #22C55E; /* 若葉 — green */
-  --color-success-light:  #F0FDF4;
+  --color-success: #22c55e; /* 若葉 — green */
+  --color-success-light: #f0fdf4;
 
   /* Semantic — Warning */
-  --color-warning:        #F59E0B; /* 琥珀 — amber */
-  --color-warning-light:  #FFFBEB;
+  --color-warning: #f59e0b; /* 琥珀 — amber */
+  --color-warning-light: #fffbeb;
 
   /* Semantic — Error */
-  --color-error:          #EF4444; /* 紅 — red */
-  --color-error-light:    #FEF2F2;
+  --color-error: #ef4444; /* 紅 — red */
+  --color-error-light: #fef2f2;
 
   /* ===================================================================
      TYPOGRAPHY
      =================================================================== */
 
   /* Font Families */
-  --font-sans: 'Geist', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
-               'Yu Gothic', 'Meiryo', sans-serif;
+  --font-sans:
+    'Geist', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
   --font-mono: 'Geist Mono', 'Osaka-Mono', monospace;
 
   /* Type Scale */
-  --text-xs:   0.75rem;   /* 12px — labels, captions */
-  --text-sm:   0.875rem;  /* 14px — secondary body */
-  --text-base: 1rem;      /* 16px — primary body */
-  --text-lg:   1.125rem;  /* 18px — large body */
-  --text-xl:   1.25rem;   /* 20px — small heading */
-  --text-2xl:  1.5rem;    /* 24px — heading */
-  --text-3xl:  1.875rem;  /* 30px — large heading */
-  --text-4xl:  2.25rem;   /* 36px — display */
+  --text-xs: 0.75rem; /* 12px — labels, captions */
+  --text-sm: 0.875rem; /* 14px — secondary body */
+  --text-base: 1rem; /* 16px — primary body */
+  --text-lg: 1.125rem; /* 18px — large body */
+  --text-xl: 1.25rem; /* 20px — small heading */
+  --text-2xl: 1.5rem; /* 24px — heading */
+  --text-3xl: 1.875rem; /* 30px — large heading */
+  --text-4xl: 2.25rem; /* 36px — display */
 
   /* Font Weights */
-  --font-normal:   400;
-  --font-medium:   500;
+  --font-normal: 400;
+  --font-medium: 500;
   --font-semibold: 600; /* use sparingly — headings only */
 
   /* ===================================================================
      SPACING  (8px base grid — all values multiples of 4px)
      =================================================================== */
 
-  --space-1:   0.25rem;  /*  4px */
-  --space-2:   0.5rem;   /*  8px */
-  --space-3:   0.75rem;  /* 12px */
-  --space-4:   1rem;     /* 16px */
-  --space-5:   1.25rem;  /* 20px */
-  --space-6:   1.5rem;   /* 24px */
-  --space-8:   2rem;     /* 32px */
-  --space-10:  2.5rem;   /* 40px */
-  --space-12:  3rem;     /* 48px */
-  --space-16:  4rem;     /* 64px */
+  --space-1: 0.25rem; /*  4px */
+  --space-2: 0.5rem; /*  8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
 
   /* ===================================================================
      BORDER RADIUS
      =================================================================== */
 
-  --radius-sm:   0.375rem; /*  6px — badges, tags */
-  --radius-md:   0.5rem;   /*  8px — inputs, buttons */
-  --radius-lg:   0.75rem;  /* 12px — cards */
-  --radius-xl:   1rem;     /* 16px — modals, sheets */
-  --radius-full: 9999px;   /* pills */
+  --radius-sm: 0.375rem; /*  6px — badges, tags */
+  --radius-md: 0.5rem; /*  8px — inputs, buttons */
+  --radius-lg: 0.75rem; /* 12px — cards */
+  --radius-xl: 1rem; /* 16px — modals, sheets */
+  --radius-full: 9999px; /* pills */
 
   /* ===================================================================
      SHADOWS  (minimal — only where elevation is semantically necessary)
@@ -112,10 +112,10 @@
      MOTION
      =================================================================== */
 
-  --duration-fast:  100ms;
-  --duration-base:  200ms;
-  --duration-slow:  300ms;
-  --ease-default:   cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-in:        cubic-bezier(0.4, 0, 1, 1);
-  --ease-out:       cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 }

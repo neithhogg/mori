@@ -4,40 +4,46 @@ This file provides guidance to Claude Code when working in this repository.
 
 ## What This Repo Is
 
-Mori Design System (森, *mori* = forest) is a shared design language and component framework for a suite of SaaS products targeting the Japanese small business market. It defines design tokens, component specs, layout rules, and Japanese localisation standards used across two initial products: **ShiftMate** (shift scheduling for restaurants & retail) and **FaxBridge** (fax-to-digital automation for manufacturers & wholesalers). Every decision must reduce friction, build trust, and feel familiar — not impressive or clever.
+Mori Design System (森, _mori_ = forest) is a shared design language and component framework for a suite of SaaS products targeting the Japanese small business market. It defines design tokens, component specs, layout rules, and Japanese localisation standards used across two initial products: **ShiftMate** (shift scheduling for restaurants & retail) and **FaxBridge** (fax-to-digital automation for manufacturers & wholesalers). Every decision must reduce friction, build trust, and feel familiar — not impressive or clever.
 
-**Design Philosophy:** 自然・簡単・信頼 — *Shizen. Kantan. Shinrai. (Natural. Simple. Trustworthy.)*
+**Design Philosophy:** 自然・簡単・信頼 — _Shizen. Kantan. Shinrai. (Natural. Simple. Trustworthy.)_
 
 > Read `PROJECT.md` before writing any code for ShiftMate, FaxBridge, or any future Mori product.
 
 ## Commands
 
 ### Build
+
 not applicable — this repo is a design system specification, not a runnable application
 
 ### Test
+
 ```bash
 pnpm test
 ```
 
 ### Lint
+
 ```bash
 pnpm lint        # check
 pnpm lint:fix    # auto-fix
 ```
 
 ### Typecheck
+
 ```bash
 pnpm typecheck
 ```
 
 ### Format
+
 ```bash
 pnpm format        # write
 pnpm format:check  # check only
 ```
 
 ### Run / Start
+
 not applicable — individual products (ShiftMate, FaxBridge) have their own repos and dev servers
 
 ## Architecture
@@ -46,16 +52,16 @@ This repo is the single source of truth for the Mori umbrella. `PROJECT.md` defi
 
 ## Tech Stack (per-product)
 
-| Layer | Choice |
-|---|---|
-| Language | TypeScript (strict — no `any`, explicit return types) |
-| Framework | Next.js 14 App Router |
-| Styling | Tailwind CSS v3 + CSS Variables |
-| Components | shadcn/ui (Mori-customised) |
-| Database + Auth | Supabase |
-| Hosting | Vercel |
-| Payments | Stripe |
-| Testing | Vitest + Playwright |
+| Layer           | Choice                                                |
+| --------------- | ----------------------------------------------------- |
+| Language        | TypeScript (strict — no `any`, explicit return types) |
+| Framework       | Next.js 14 App Router                                 |
+| Styling         | Tailwind CSS v3 + CSS Variables                       |
+| Components      | shadcn/ui (Mori-customised)                           |
+| Database + Auth | Supabase                                              |
+| Hosting         | Vercel                                                |
+| Payments        | Stripe                                                |
+| Testing         | Vitest + Playwright                                   |
 
 ## Code Style
 
@@ -83,4 +89,5 @@ This repo is the single source of truth for the Mori umbrella. `PROJECT.md` defi
 - i18n for languages other than Japanese
 
 ## Last Updated
+
 2026-03-30

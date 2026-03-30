@@ -64,11 +64,7 @@ const RADIUS_TOKENS = [
   '--radius-full',
 ] as const // 5 radius tokens
 
-const SHADOW_TOKENS = [
-  '--shadow-sm',
-  '--shadow-md',
-  '--shadow-lg',
-] as const // 3 shadow tokens
+const SHADOW_TOKENS = ['--shadow-sm', '--shadow-md', '--shadow-lg'] as const // 3 shadow tokens
 
 const MOTION_TOKENS = [
   '--duration-fast',
