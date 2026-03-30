@@ -62,7 +62,7 @@ Japanese small business owners — restaurants, retail shops, manufacturers, and
 | --------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
 | Language        | TypeScript (strict)                    | Catches token misuse at compile time across shared components                 |
 | Framework       | Next.js 14 (App Router)                | Server Components reduce client JS — critical for mobile on Japanese networks |
-| Styling         | Tailwind CSS v3 + CSS Variables        | CSS variables enable the token system shared and extended per product         |
+| Styling         | Tailwind CSS v4 + CSS Variables        | CSS variables enable the token system shared and extended per product         |
 | Components      | shadcn/ui (Mori-customised)            | Copy-paste model means Mori owns the customisations, no override fighting     |
 | Database + Auth | Supabase (PostgreSQL + Auth + Storage) | Reduces moving parts for small team building two products simultaneously      |
 | Hosting         | Vercel                                 | Zero-config Next.js; edge network reduces latency for Japan                   |
@@ -611,7 +611,7 @@ Each product maintains its own `PROJECT.md` that imports this document and exten
 
 ## Last Updated
 
-2026-03-29
+2026-03-31
 
 _Owner: Albert (横浜)_
 _Products: ShiftMate · FaxBridge · (future)_

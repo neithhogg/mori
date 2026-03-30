@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config(
   // Ignore generated/third-party directories
   {
-    ignores: ['node_modules/**', 'openspec/**', '.agents/**'],
+    ignores: ['node_modules/**', 'openspec/**', '.agents/**', 'dist/**'],
   },
 
   // TypeScript strict + stylistic for all TS/TSX files

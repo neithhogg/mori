@@ -1,6 +1,6 @@
 # Project Journal
 
-_Last updated: 2026-03-30_
+_Last updated: 2026-03-31_
 
 ## Current
 
@@ -8,10 +8,13 @@ _Last updated: 2026-03-30_
 - [x] Dialog component spec added to PROJECT.md
 - [x] Design tokens implemented — `src/tokens/globals.css` (57 CSS vars, 65 Vitest tests)
 - [x] OpenSpec CLI (@fission-ai/openspec v1.2.0) installed
+- [x] Core component library — Button, Input, Card, Badge, Skeleton, Dialog, BottomTabBar, Sidebar (160 Vitest tests)
+- [x] React-powered component showcase (`pnpm dev`) — all 7 components with live interactive demos
 
 ## Future
 
-- [ ] Remaining component specs: Button, Input, Card, Badge/Tag, Navigation, Loading, Empty States, Toast
+- [ ] Empty States component
+- [ ] Toast / notification component
 - [ ] Page layout system spec
 - [ ] Japanese localisation utilities (date, currency, time formatters)
 - [ ] Shared infrastructure setup (Supabase, Stripe, Vercel, Sentry, PostHog, Resend)

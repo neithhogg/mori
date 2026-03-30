@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Mori Design System — shared design language for ShiftMate and FaxBridge",
+  "packageManager": "pnpm@10.7.0",
   "engines": {
     "node": ">=22",
     "pnpm": ">=9"
@@ -13,6 +14,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
+    "dev": "vite",
+    "build:showcase": "vite build",
     "test": "vitest run",
     "preinstall": "npx only-allow pnpm"
   },
@@ -20,17 +23,36 @@
     "onlyBuiltDependencies": [
       "@fission-ai/openspec",
       "esbuild"
-    ]
+    ],
+    "overrides": {
+      "vite": "^8.0.3"
+    }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.469.0",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@fission-ai/openspec": "^1.2.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@types/node": "^22.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.0.0",
+    "jsdom": "^26.0.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.2.2",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.0.0",
+    "vite": "^8.0.3",
     "vitest": "^3.0.0"
   }
 }
