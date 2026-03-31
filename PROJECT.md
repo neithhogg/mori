@@ -37,7 +37,7 @@ Japanese small business owners — restaurants, retail shops, manufacturers, and
 - Design tokens (colour, typography, spacing, radius, shadows, motion)
 - Component specifications (Button, Input, Card, Badge, Navigation, Loading, Empty States, Toast)
 - Page layout system (breakpoints, containers, mobile/desktop structure)
-- Japanese localisation rules (fonts, UI copy, date/number formatting)
+- Multi-locale support: Japanese (`ja`), English (`en`), Simplified Chinese (`zh-Hans`)
 - Shared infrastructure setup (Supabase, Stripe, Vercel, Sentry, PostHog, Resend)
 - Two initial products: ShiftMate and FaxBridge
 - Japan legal compliance pages (プライバシーポリシー, 利用規約, 特定商取引法に基づく表記)
@@ -52,7 +52,8 @@ Japanese small business owners — restaurants, retail shops, manufacturers, and
 - Framer Motion or page transitions in MVP
 - Warning toasts (use inline form errors instead)
 - Full-page spinners for data fetching (skeletons only)
-- Internationalisation for languages other than Japanese
+- RTL script support or Traditional Chinese (`zh-Hant`)
+- Machine translation or browser `Accept-Language` auto-detection in MVP
 
 ---
 
@@ -77,7 +78,7 @@ Japanese small business owners — restaurants, retail shops, manufacturers, and
 ## Constraints
 
 - Mobile-first — 390px primary target; Japanese SMB owners use smartphones
-- All user-facing text in Japanese
+- All user-facing text in the active locale (`ja` | `en` | `zh-Hans`) — default is Japanese
 - CSS variables for all tokens — never hardcode hex or px values
 - TypeScript strict mode — no `any`, explicit return types on all functions
 - shadcn/ui customised to Mori spec, never used raw
@@ -137,10 +138,21 @@ All values are defined as CSS custom properties on `:root`. **Never hardcode hex
 
 ```css
 :root {
-  /* === Font Families === */
+  /* === Font Families (locale-aware) === */
+  /* CJK default — Japanese and Chinese use this base stack */
+  --font-body:
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  --font-heading:
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  /* Legacy alias — kept for backward compatibility */
   --font-sans:
     'Geist', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
   --font-mono: 'Geist Mono', 'Osaka-Mono', monospace;
+
+  /* === Line Height (locale-aware) === */
+  /* CJK scripts need looser leading than Latin */
+  --leading-body: 1.8;
+  --leading-heading: 1.4;
 
   /* === Type Scale === */
   --text-xs: 0.75rem; /* 12px — labels, captions */
@@ -157,14 +169,27 @@ All values are defined as CSS custom properties on `:root`. **Never hardcode hex
   --font-medium: 500;
   --font-semibold: 600; /* use sparingly, headings only */
 }
+
+/* Locale overrides — applied via data-locale on <html> */
+[data-locale='en'] {
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --leading-body: 1.6;
+  --leading-heading: 1.25;
+}
+[data-locale='zh-Hans'] {
+  --font-body: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  --font-heading: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+}
 ```
 
 **Rules:**
 
-- Body text: `--text-base`, `--font-normal`, line-height `1.7`
+- Body text: `--text-base`, `--font-normal`, line-height `var(--leading-body)`
 - UI labels: `--text-sm`, `--font-medium`
-- Headings: `--font-semibold`, never bold (700) in UI
-- Japanese text inherits font-family fallback automatically — no special handling needed
+- Headings: `--font-semibold`, line-height `var(--leading-heading)`, never bold (700) in UI
+- Always reference `var(--font-body)` or `var(--font-heading)` — never hardcode a font family
+- The design system does **not** load web fonts — each product loads fonts via `next/font`
 
 ### Spacing Scale
 
@@ -430,56 +455,74 @@ Mobile:                          Desktop:
 
 ---
 
-## Japanese Language & Localisation
+## Localisation
+
+Supported locales: **`ja`** (Japanese, default) · **`en`** (English) · **`zh-Hans`** (Simplified Chinese)
+
+### Locale Setup (Next.js App Router)
+
+```ts
+// next.config.ts
+i18n: {
+  locales: ['ja', 'en', 'zh'],
+  defaultLocale: 'ja',
+}
+
+// app/[locale]/layout.tsx — set data-locale on <html> for CSS overrides
+<html lang={locale} data-locale={locale}>
+```
+
+Legacy unprefixed routes must redirect to `/ja/` equivalents via `next.config.ts` `redirects`.
 
 ### Font Rendering
 
 ```css
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Do NOT set font-feature-settings — let the system handle it */
-}
-
-.ui-label-ja {
-  letter-spacing: 0.025em;
+  line-height: var(--leading-body);
 }
 ```
 
 ### UI Copy Guidelines
 
-```
-Actions:   ✓ 保存する / 削除する / 追加する   ✗ 保存 / 削除 (too abrupt)
-Loading:   処理中...
-Success:   完了しました
-Error:     エラーが発生しました
-Empty:     ✓ まだシフトがありません   ✗ データがありません (too cold)
-Confirm:   本当に削除しますか？この操作は取り消せません。
-           [キャンセル] [削除する]  — destructive on the right, always
-```
+Use `useCopy()` from `@mori/ui` to get locale-aware strings. Never hardcode copy in components.
+
+| Pattern | `ja` | `en` | `zh-Hans` |
+|---------|------|------|-----------|
+| Save action | 保存する | Save | 保存 |
+| Delete action | 削除する | Delete | 删除 |
+| Cancel | キャンセル | Cancel | 取消 |
+| Loading | 処理中... | Loading... | 处理中... |
+| Success | ✓ 保存しました | ✓ Saved | ✓ 已保存 |
+| Error | エラーが発生しました。もう一度お試しください。 | Something went wrong. Please try again. | 发生错误，请重试。 |
+| Empty state | まだデータがありません | No data yet | 暂无数据 |
+| Destructive hint | この操作は取り消せません。 | This action cannot be undone. | 此操作无法撤消。 |
+
+**Rules:**
+- Japanese actions end in `する` — `保存する`, `削除する`, `追加する` (never `保存`, `削除`)
+- Destructive action always on the RIGHT in confirm dialogs — all locales
+- `zh-Hans` copy is marked `// TODO: zh-Hans review` until human-reviewed
 
 ### Date & Number Formatting
 
+Use `formatDate` and `formatCurrency` from `src/lib/locale/format.ts`:
+
 ```tsx
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('ja-JP', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    weekday: 'short',
-  }).format(date)
-// → 2025年1月28日(火)
+import { formatDate, formatCurrency } from '@mori/ui'
 
-const formatYen = (amount: number) => `¥${amount.toLocaleString('ja-JP')}`
-// → ¥1,980
+formatDate(new Date('2025-01-28'), 'ja')       // → 2025年1月28日(火)
+formatDate(new Date('2025-01-28'), 'en')       // → Tuesday, January 28, 2025
+formatDate(new Date('2025-01-28'), 'zh-Hans')  // → 2025年1月28日 星期二
 
-const formatTime = (date: Date) =>
-  new Intl.DateTimeFormat('ja-JP', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  }).format(date)
+formatCurrency(1980, 'ja')        // → ¥1,980  (all locales — products are JPY-priced)
+formatCurrency(1980, 'en')        // → ¥1,980
+formatCurrency(1980, 'zh-Hans')   // → ¥1,980
+
+// Time (24-hour, all locales)
+const formatTime = (date: Date, locale: string) =>
+  new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hour12: false }).format(date)
 // → 09:00
 ```
 
@@ -557,6 +600,30 @@ NEXT_PUBLIC_APP_NAME=
 # Optional
 SENTRY_DSN=
 NEXT_PUBLIC_POSTHOG_KEY=
+```
+
+---
+
+## Locale Persistence (Supabase)
+
+Add a `locale` column to `user_preferences` so the user's locale follows them across devices:
+
+```sql
+-- Migration: add locale preference to user_preferences
+alter table user_preferences
+  add column if not exists locale text default 'ja';
+```
+
+**Pattern:**
+1. On login: read `user_preferences.locale`, redirect to `/<locale>/dashboard`
+2. When user switches locale (e.g. via a language picker): update `user_preferences.locale` and reload
+
+```ts
+// On locale switch
+await supabase
+  .from('user_preferences')
+  .upsert({ user_id: userId, locale: newLocale })
+router.push(`/${newLocale}${pathname}`)
 ```
 
 ---

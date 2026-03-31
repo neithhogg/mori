@@ -11,6 +11,13 @@
 // ── Utility ───────────────────────────────────────────────────────────────────
 export { cn } from './lib/cn'
 
+// ── Localisation ──────────────────────────────────────────────────────────────
+export type { Locale } from './lib/locale/types'
+export { LocaleProvider, useLocale } from './lib/locale/context'
+export type { CopyKeys } from './lib/locale/copy'
+export { MoriCopy, useCopy } from './lib/locale/hooks'
+export { formatDate, formatCurrency } from './lib/locale/format'
+
 // ── Components ────────────────────────────────────────────────────────────────
 export { Button } from './components/ui/button'
 export type { ButtonProps, ButtonVariant, ButtonSize } from './components/ui/button'
