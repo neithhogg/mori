@@ -30,6 +30,10 @@ const COLOUR_TOKENS = [
 const TYPOGRAPHY_TOKENS = [
   '--font-sans',
   '--font-mono',
+  '--font-body',
+  '--font-heading',
+  '--leading-body',
+  '--leading-heading',
   '--text-xs',
   '--text-sm',
   '--text-base',
@@ -41,7 +45,7 @@ const TYPOGRAPHY_TOKENS = [
   '--font-normal',
   '--font-medium',
   '--font-semibold',
-] as const // 13 typography tokens
+] as const // 17 typography tokens (13 original + 4 locale-aware font/leading tokens)
 
 const SPACING_TOKENS = [
   '--space-1',
@@ -137,7 +141,7 @@ describe('src/tokens/globals.css', () => {
       // Count unique CSS custom property declarations in the file.
       const matches = css.match(/--[\w-]+:/g) ?? []
       const unique = new Set(matches)
-      // 19 colour + 13 typography + 10 spacing + 5 radius + 3 shadow + 6 motion = 56
+      // 19 colour + 17 typography + 10 spacing + 5 radius + 3 shadow + 6 motion = 60
       expect(unique.size).toBe(ALL_TOKENS.length)
     })
   })

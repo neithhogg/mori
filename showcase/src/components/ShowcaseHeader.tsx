@@ -10,13 +10,13 @@ export function ShowcaseHeader(): JSX.Element {
   return (
     <header className="mb-16 pb-12" style={{ borderBottom: '1px solid var(--color-border)' }}>
       <p
-        className="mb-3 text-xs font-semibold uppercase tracking-[0.16em]"
+        className="mb-3 text-xs font-semibold tracking-[0.16em] uppercase"
         style={{ color: 'var(--color-brand)' }}
       >
         Design System
       </p>
       <h1
-        className="mb-3 text-5xl font-bold leading-none tracking-tight"
+        className="mb-3 text-5xl leading-none font-bold tracking-tight"
         style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink)' }}
       >
         森
@@ -36,15 +36,12 @@ export function ShowcaseHeader(): JSX.Element {
         {STATS.map((stat) => (
           <div key={stat.label}>
             <p
-              className="text-3xl font-bold tabular-nums leading-none"
+              className="text-3xl leading-none font-bold tabular-nums"
               style={{ color: 'var(--color-brand)' }}
             >
               {stat.value}
             </p>
-            <p
-              className="mt-1 text-xs"
-              style={{ color: 'var(--color-ink-tertiary)' }}
-            >
+            <p className="mt-1 text-xs" style={{ color: 'var(--color-ink-tertiary)' }}>
               {stat.label}
             </p>
           </div>

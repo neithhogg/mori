@@ -1,9 +1,4 @@
-# design-tokens Specification
-
-## Purpose
-Define the requirements for Mori design token files — ensuring all six token groups from PROJECT.md are present, correctly named, and importable by product repositories.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Token file covers all six groups
 `src/tokens/globals.css` SHALL define CSS custom properties on `:root` for all six token groups specified in PROJECT.md: colour palette, typography scale, spacing scale, border radius, shadows, and motion. The file SHALL additionally define locale-specific overrides for typography tokens (`--font-body`, `--font-heading`, `--leading-body`, `--leading-heading`) scoped to `[data-locale]` attribute selectors as specified in the `localisation-typography` spec.
@@ -19,14 +14,3 @@ Define the requirements for Mori design token files — ensuring all six token g
 #### Scenario: Locale typography overrides present
 - **WHEN** `globals.css` is parsed
 - **THEN** it SHALL contain `[data-locale="en"]` and `[data-locale="zh-Hans"]` blocks that override `--font-body`, `--font-heading`, `--leading-body`, and `--leading-heading`
-
-### Requirement: Token names match PROJECT.md exactly
-Every CSS custom property name in `globals.css` SHALL match the name defined in PROJECT.md character-for-character (e.g., `--color-brand`, `--space-4`, `--radius-md`).
-
-#### Scenario: Name fidelity
-- **WHEN** each token name in `globals.css` is compared against PROJECT.md
-- **THEN** there SHALL be no typos, no added prefixes, no renamed variables — the names are identical
-
-#### Scenario: Token count matches specification
-- **WHEN** the total token count per group is checked
-- **THEN** it SHALL equal: colour 19, typography 17, spacing 10, radius 5, shadows 3, motion 6 (60 tokens total)

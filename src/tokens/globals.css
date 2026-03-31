@@ -56,9 +56,20 @@
      =================================================================== */
 
   /* Font Families */
+  /* CJK default — Japanese and Chinese share this base stack unless overridden below */
+  --font-body:
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  --font-heading:
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  /* Kept for backward compatibility with existing component references */
   --font-sans:
     'Geist', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
   --font-mono: 'Geist Mono', 'Osaka-Mono', monospace;
+
+  /* Line Height */
+  /* CJK scripts need looser leading for readability */
+  --leading-body: 1.8;
+  --leading-heading: 1.4;
 
   /* Type Scale */
   --text-xs: 0.75rem; /* 12px — labels, captions */
@@ -118,4 +129,26 @@
   --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ===================================================================
+   LOCALE TYPOGRAPHY OVERRIDES
+   Applied via data-locale attribute on <html> set by the root layout.
+   Japanese uses :root defaults (no override needed).
+   =================================================================== */
+
+[data-locale='en'] {
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  /* Latin scripts read better with tighter leading than CJK */
+  --leading-body: 1.6;
+  --leading-heading: 1.25;
+}
+
+[data-locale='zh-Hans'] {
+  --font-body: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  --font-heading: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  /* Simplified Chinese uses the same loose leading as Japanese */
+  --leading-body: 1.8;
+  --leading-heading: 1.4;
 }
