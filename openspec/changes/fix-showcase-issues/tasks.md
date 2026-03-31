@@ -17,5 +17,5 @@
 
 ## 4. Commit and Push
 
-- [ ] 4.1 Commit the fix to `showcase/src/sections/BadgeSection.tsx` with a clear message (e.g. `fix(showcase): use T[] array syntax in BadgeSection`)
-- [ ] 4.2 Push to branch `claude/run-opsx-propose-k66iV`
+- [x] 4.1 Commit the fix to `showcase/src/sections/BadgeSection.tsx` with a clear message (e.g. `fix(showcase): use T[] array syntax in BadgeSection`)
+- [x] 4.2 Push to branch `claude/run-opsx-propose-k66iV`
