@@ -10,7 +10,7 @@ export function VarBlock({ label, children, className }: VarBlockProps): JSX.Ele
   return (
     <div>
       <p
-        className="mb-3 text-xs font-medium uppercase tracking-[0.1em]"
+        className="mb-3 text-xs font-medium tracking-[0.1em] uppercase"
         style={{ color: 'var(--color-ink-tertiary)' }}
       >
         {label}

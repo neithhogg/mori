@@ -17,7 +17,7 @@ function renderWithLocale(locale: Locale, field: string): void {
   render(
     <LocaleProvider locale={locale}>
       <CopyDisplay field={field} />
-    </LocaleProvider>,
+    </LocaleProvider>
   )
 }
 

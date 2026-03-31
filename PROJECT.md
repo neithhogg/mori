@@ -489,18 +489,19 @@ body {
 
 Use `useCopy()` from `@mori/ui` to get locale-aware strings. Never hardcode copy in components.
 
-| Pattern | `ja` | `en` | `zh-Hans` |
-|---------|------|------|-----------|
-| Save action | 保存する | Save | 保存 |
-| Delete action | 削除する | Delete | 删除 |
-| Cancel | キャンセル | Cancel | 取消 |
-| Loading | 処理中... | Loading... | 处理中... |
-| Success | ✓ 保存しました | ✓ Saved | ✓ 已保存 |
-| Error | エラーが発生しました。もう一度お試しください。 | Something went wrong. Please try again. | 发生错误，请重试。 |
-| Empty state | まだデータがありません | No data yet | 暂无数据 |
-| Destructive hint | この操作は取り消せません。 | This action cannot be undone. | 此操作无法撤消。 |
+| Pattern          | `ja`                                           | `en`                                    | `zh-Hans`          |
+| ---------------- | ---------------------------------------------- | --------------------------------------- | ------------------ |
+| Save action      | 保存する                                       | Save                                    | 保存               |
+| Delete action    | 削除する                                       | Delete                                  | 删除               |
+| Cancel           | キャンセル                                     | Cancel                                  | 取消               |
+| Loading          | 処理中...                                      | Loading...                              | 处理中...          |
+| Success          | ✓ 保存しました                                 | ✓ Saved                                 | ✓ 已保存           |
+| Error            | エラーが発生しました。もう一度お試しください。 | Something went wrong. Please try again. | 发生错误，请重试。 |
+| Empty state      | まだデータがありません                         | No data yet                             | 暂无数据           |
+| Destructive hint | この操作は取り消せません。                     | This action cannot be undone.           | 此操作无法撤消。   |
 
 **Rules:**
+
 - Japanese actions end in `する` — `保存する`, `削除する`, `追加する` (never `保存`, `削除`)
 - Destructive action always on the RIGHT in confirm dialogs — all locales
 - `zh-Hans` copy is marked `// TODO: zh-Hans review` until human-reviewed
@@ -512,17 +513,19 @@ Use `formatDate` and `formatCurrency` from `src/lib/locale/format.ts`:
 ```tsx
 import { formatDate, formatCurrency } from '@mori/ui'
 
-formatDate(new Date('2025-01-28'), 'ja')       // → 2025年1月28日(火)
-formatDate(new Date('2025-01-28'), 'en')       // → Tuesday, January 28, 2025
-formatDate(new Date('2025-01-28'), 'zh-Hans')  // → 2025年1月28日 星期二
+formatDate(new Date('2025-01-28'), 'ja') // → 2025年1月28日(火)
+formatDate(new Date('2025-01-28'), 'en') // → Tuesday, January 28, 2025
+formatDate(new Date('2025-01-28'), 'zh-Hans') // → 2025年1月28日 星期二
 
-formatCurrency(1980, 'ja')        // → ¥1,980  (all locales — products are JPY-priced)
-formatCurrency(1980, 'en')        // → ¥1,980
-formatCurrency(1980, 'zh-Hans')   // → ¥1,980
+formatCurrency(1980, 'ja') // → ¥1,980  (all locales — products are JPY-priced)
+formatCurrency(1980, 'en') // → ¥1,980
+formatCurrency(1980, 'zh-Hans') // → ¥1,980
 
 // Time (24-hour, all locales)
 const formatTime = (date: Date, locale: string) =>
-  new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hour12: false }).format(date)
+  new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hour12: false }).format(
+    date
+  )
 // → 09:00
 ```
 
@@ -615,14 +618,13 @@ alter table user_preferences
 ```
 
 **Pattern:**
+
 1. On login: read `user_preferences.locale`, redirect to `/<locale>/dashboard`
 2. When user switches locale (e.g. via a language picker): update `user_preferences.locale` and reload
 
 ```ts
 // On locale switch
-await supabase
-  .from('user_preferences')
-  .upsert({ user_id: userId, locale: newLocale })
+await supabase.from('user_preferences').upsert({ user_id: userId, locale: newLocale })
 router.push(`/${newLocale}${pathname}`)
 ```
 
