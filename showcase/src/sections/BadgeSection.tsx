@@ -4,7 +4,7 @@ import type { BadgeVariant } from '@mori/components/ui/badge'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
 
-const BADGES: Array<{ variant: BadgeVariant; label: string; desc: string }> = [
+const BADGES: { variant: BadgeVariant; label: string; desc: string }[] = [
   { variant: 'green', label: '承認済', desc: 'green — success' },
   { variant: 'amber', label: '保留中', desc: 'amber — warning' },
   { variant: 'red', label: 'エラー', desc: 'red — error' },
