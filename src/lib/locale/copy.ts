@@ -22,6 +22,7 @@ export interface CopyKeys {
   empty: {
     default: string
     search: string
+    description: string
   }
   confirm: {
     destructiveHint: string
@@ -58,6 +59,7 @@ export const MoriCopy: Record<Locale, CopyKeys> = {
     empty: {
       default: 'まだデータがありません',
       search: '検索結果がありません',
+      description: 'まだ項目が登録されていません。',
     },
     confirm: {
       destructiveHint: 'この操作は取り消せません。',
@@ -93,6 +95,7 @@ export const MoriCopy: Record<Locale, CopyKeys> = {
     empty: {
       default: 'No data yet',
       search: 'No results found',
+      description: 'No items have been added yet.',
     },
     confirm: {
       destructiveHint: 'This action cannot be undone.',
@@ -145,6 +148,8 @@ export const MoriCopy: Record<Locale, CopyKeys> = {
       default: '暂无数据',
       // TODO: zh-Hans review
       search: '未找到结果',
+      // TODO: zh-Hans review
+      description: '还没有添加任何项目。',
     },
     confirm: {
       // TODO: zh-Hans review
