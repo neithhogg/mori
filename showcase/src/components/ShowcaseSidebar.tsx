@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { id: 'skeleton', num: '05', en: 'Skeleton', ja: 'ローディング' },
   { id: 'dialog', num: '06', en: 'Dialog', ja: 'ダイアログ' },
   { id: 'navigation', num: '07', en: 'Navigation', ja: 'ナビゲーション' },
+  { id: 'empty-state', num: '08', en: 'Empty State', ja: '空の状態' },
 ]
 
 export function ShowcaseSidebar(): JSX.Element {

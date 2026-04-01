@@ -8,6 +8,7 @@ import { BadgeSection } from './sections/BadgeSection'
 import { SkeletonSection } from './sections/SkeletonSection'
 import { DialogSection } from './sections/DialogSection'
 import { NavigationSection } from './sections/NavigationSection'
+import { EmptyStateSection } from './sections/EmptyStateSection'
 
 export function App(): JSX.Element {
   return (
@@ -22,6 +23,7 @@ export function App(): JSX.Element {
         <SkeletonSection />
         <DialogSection />
         <NavigationSection />
+        <EmptyStateSection />
       </main>
     </div>
   )
