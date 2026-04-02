@@ -18,13 +18,34 @@ export function ShowcaseSidebar(): JSX.Element {
   const [activeId, setActiveId] = useState('btn')
 
   useEffect(() => {
+    // Keep track of which sections are currently intersecting
+    const intersecting = new Set<string>()
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActiveId(e.target.id)
+          if (e.isIntersecting) {
+            intersecting.add(e.target.id)
+          } else {
+            intersecting.delete(e.target.id)
+          }
         })
+
+        // Out of all currently intersecting sections, find the one furthest down the page
+        // by finding its index in NAV_KEYS.
+        let activeIdx = -1
+        NAV_KEYS.forEach((item, idx) => {
+          if (intersecting.has(item.id)) {
+            activeIdx = idx
+          }
+        })
+
+        const activeItem = NAV_KEYS[activeIdx]
+        if (activeItem) {
+          setActiveId(activeItem.id)
+        }
       },
-      { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' }
+      { threshold: 0.1, rootMargin: '-10% 0px -40% 0px' }
     )
     NAV_KEYS.forEach(({ id }) => {
       const el = document.getElementById(id)
