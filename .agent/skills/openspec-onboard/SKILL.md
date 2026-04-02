@@ -1,8 +1,12 @@
 ---
-name: 'OPSX: Onboard'
-description: Guided onboarding - walk through a complete OpenSpec workflow cycle with narration
-category: Workflow
-tags: [workflow, onboarding, tutorial, learning]
+name: openspec-onboard
+description: Guided onboarding for OpenSpec - walk through a complete workflow cycle with narration and real codebase work.
+license: MIT
+compatibility: Requires openspec CLI.
+metadata:
+  author: openspec
+  version: "1.0"
+  generatedBy: "1.2.0"
 ---
 
 Guide the user through their first complete OpenSpec workflow cycle. This is a teaching experience—you'll do real work in their codebase while explaining each step.
@@ -21,7 +25,6 @@ openspec --version 2>&1 || echo "CLI_NOT_INSTALLED"
 ```
 
 **If CLI not installed:**
-
 > OpenSpec CLI is not installed. Install it first, then come back to `/opsx:onboard`.
 
 Stop here if not installed.
@@ -66,7 +69,6 @@ Scan the codebase for small improvement opportunities. Look for:
 6. **Missing validation** - User input handlers without validation
 
 Also check recent git activity:
-
 ```bash
 # Unix/macOS
 git log --oneline -10 2>/dev/null || echo "No git history"
@@ -105,7 +107,6 @@ Which task interests you? (Pick a number or describe your own)
 ```
 
 **If nothing found:** Fall back to asking what the user wants to build:
-
 > I didn't find obvious quick wins in your codebase. What's something small you've been meaning to add or fix?
 
 ### Scope Guardrail
@@ -138,7 +139,6 @@ Before we create a change, let me quickly show you **explore mode**—it's how y
 ```
 
 Spend 1-2 minutes investigating the relevant code:
-
 - Read the file(s) involved
 - Draw a quick ASCII diagram if it helps
 - Note any considerations
@@ -164,7 +164,6 @@ Now let's create a change to hold our work.
 ## Phase 4: Create the Change
 
 **EXPLAIN:**
-
 ```
 ## Creating a Change
 
@@ -174,25 +173,21 @@ Let me create one for our task.
 ```
 
 **DO:** Create the change with a derived kebab-case name:
-
 ```bash
 openspec new change "<derived-name>"
 ```
 
 **SHOW:**
-
 ```
 Created: `openspec/changes/<name>/`
 
 The folder structure:
 ```
-
 openspec/changes/<name>/
-├── proposal.md ← Why we're doing this (empty, we'll fill it)
-├── design.md ← How we'll build it (empty)
-├── specs/ ← Detailed requirements (empty)
-└── tasks.md ← Implementation checklist (empty)
-
+├── proposal.md    ← Why we're doing this (empty, we'll fill it)
+├── design.md      ← How we'll build it (empty)
+├── specs/         ← Detailed requirements (empty)
+└── tasks.md       ← Implementation checklist (empty)
 ```
 
 Now let's fill in the first artifact—the proposal.
@@ -203,7 +198,6 @@ Now let's fill in the first artifact—the proposal.
 ## Phase 5: Proposal
 
 **EXPLAIN:**
-
 ```
 ## The Proposal
 
@@ -248,11 +242,9 @@ Does this capture the intent? I can adjust before we save it.
 **PAUSE** - Wait for user approval/feedback.
 
 After approval, save the proposal:
-
 ```bash
 openspec instructions proposal --change "<name>" --json
 ```
-
 Then write the content to `openspec/changes/<name>/proposal.md`.
 
 ```
@@ -266,7 +258,6 @@ Next up: specs.
 ## Phase 6: Specs
 
 **EXPLAIN:**
-
 ```
 ## Specs
 
@@ -276,7 +267,6 @@ For a small task like this, we might only need one spec file.
 ```
 
 **DO:** Create the spec file:
-
 ```bash
 # Unix/macOS
 mkdir -p openspec/changes/<name>/specs/<capability-name>
@@ -315,7 +305,6 @@ Save to `openspec/changes/<name>/specs/<capability>/spec.md`.
 ## Phase 7: Design
 
 **EXPLAIN:**
-
 ```
 ## Design
 
@@ -361,7 +350,6 @@ Save to `openspec/changes/<name>/design.md`.
 ## Phase 8: Tasks
 
 **EXPLAIN:**
-
 ```
 ## Tasks
 
@@ -400,7 +388,6 @@ Save to `openspec/changes/<name>/tasks.md`.
 ## Phase 9: Apply (Implementation)
 
 **EXPLAIN:**
-
 ```
 ## Implementation
 
@@ -435,7 +422,6 @@ The change is implemented! One more step—let's archive it.
 ## Phase 10: Archive
 
 **EXPLAIN:**
-
 ```
 ## Archiving
 
@@ -445,13 +431,11 @@ Archived changes become your project's decision history—you can always find th
 ```
 
 **DO:**
-
 ```bash
 openspec archive "<name>"
 ```
 
 **SHOW:**
-
 ```
 Archived to: `openspec/changes/archive/YYYY-MM-DD-<name>/`
 
