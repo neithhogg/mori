@@ -4,45 +4,43 @@ import type { TabItem, SidebarNavItem } from '@mori/components/ui/navigation'
 import { Home, Calendar, Users, FileText, Settings, Bell } from 'lucide-react'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
-
-const SIDEBAR_ITEMS: SidebarNavItem[] = [
-  { key: 'home', icon: Home, label: 'ホーム' },
-  { key: 'shift', icon: Calendar, label: 'シフト管理' },
-  { key: 'staff', icon: Users, label: 'スタッフ一覧' },
-  { key: 'reports', icon: FileText, label: 'レポート' },
-  { key: 'notifications', icon: Bell, label: '通知' },
-  { key: 'settings', icon: Settings, label: '設定' },
-]
-
-const TAB_ITEMS: Omit<TabItem, 'isActive' | 'onClick'>[] = [
-  { key: 'home', icon: Home, label: 'ホーム' },
-  { key: 'shift', icon: Calendar, label: 'シフト' },
-  { key: 'staff', icon: Users, label: 'スタッフ' },
-  { key: 'settings', icon: Settings, label: '設定' },
-]
+import { useT } from '../lib/useT'
 
 export function NavigationSection(): JSX.Element {
+  const t = useT()
   const [activeSidebar, setActiveSidebar] = useState('home')
   const [activeTab, setActiveTab] = useState('home')
+
+  const SIDEBAR_ITEMS: SidebarNavItem[] = [
+    { key: 'home',          icon: Home,     label: t.navHome          },
+    { key: 'shift',         icon: Calendar, label: t.navShift         },
+    { key: 'staff',         icon: Users,    label: t.navStaff         },
+    { key: 'reports',       icon: FileText, label: t.navReports       },
+    { key: 'notifications', icon: Bell,     label: t.navNotifications },
+    { key: 'settings',      icon: Settings, label: t.navSettings      },
+  ]
+
+  const TAB_ITEMS: Omit<TabItem, 'isActive' | 'onClick'>[] = [
+    { key: 'home',     icon: Home,     label: t.navTabHome     },
+    { key: 'shift',    icon: Calendar, label: t.navTabShift    },
+    { key: 'staff',    icon: Users,    label: t.navTabStaff    },
+    { key: 'settings', icon: Settings, label: t.navTabSettings },
+  ]
 
   const sidebarItems = SIDEBAR_ITEMS.map((item) => ({
     ...item,
     isActive: item.key === activeSidebar,
-    onClick: () => {
-      setActiveSidebar(item.key)
-    },
+    onClick: () => { setActiveSidebar(item.key) },
   }))
 
   const tabItems = TAB_ITEMS.map((item) => ({
     ...item,
     isActive: item.key === activeTab,
-    onClick: () => {
-      setActiveTab(item.key)
-    },
+    onClick: () => { setActiveTab(item.key) },
   }))
 
   return (
-    <SectionWrapper id="navigation" num="07" titleEn="Navigation" titleJa="ナビゲーション">
+    <SectionWrapper id="navigation" num="07" titleEn="Navigation" titleJa={t.sectionSubtitleNavigation}>
       <VarBlock label="Sidebar — Desktop (≥768px)">
         <div
           className="w-[240px] overflow-hidden rounded-xl"
@@ -62,7 +60,7 @@ export function NavigationSection(): JSX.Element {
           <BottomTabBar items={tabItems} className="!relative !rounded-xl !border-t-0" />
         </div>
         <p className="mt-3 text-xs" style={{ color: 'var(--color-ink-tertiary)' }}>
-          ※ 実際の使用時は画面下部に固定されます（position: fixed）
+          {t.navFixedNote}
         </p>
       </VarBlock>
     </SectionWrapper>
