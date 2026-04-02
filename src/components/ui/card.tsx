@@ -7,7 +7,8 @@ export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   variant?: CardVariant
 }
 
-const BASE = 'bg-(--color-surface) border border-(--color-border) rounded-(--radius-lg) p-6'
+// p-4 on mobile, p-5 on sm+ — matches StatCard's inner padding so grids align
+const BASE = 'bg-(--color-surface) border border-(--color-border) rounded-(--radius-lg) p-4 sm:p-5'
 
 const VARIANT_CLASSES: Record<CardVariant, string> = {
   base: '',

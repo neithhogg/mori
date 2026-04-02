@@ -359,6 +359,94 @@ Description (--text-sm, --color-ink-secondary, max-width: 280px, centered)
 Primary CTA button (optional)
 ```
 
+### StatCard
+
+Single-metric display tile for KPI summaries (出勤数, 売上, 未処理件数).
+
+```tsx
+interface StatCardProps {
+  label: string          // e.g. "本日の出勤数"
+  value: string          // pre-formatted by caller, e.g. "12" or "198,000"
+  delta?: {
+    value: string        // e.g. "+3" or "-5.2%"
+    direction: 'up' | 'down'
+  }
+  format?: 'currency' | 'count' | 'percent'  // ARIA hint only — does not format value
+  isLoading?: boolean
+}
+```
+
+```tsx
+base: 'bg-(--color-surface) border border-(--color-border) rounded-(--radius-lg) p-4 sm:p-5'
+label: '--color-ink-secondary, text-sm'
+value: '--color-ink, text-2xl font-bold tabular-nums'
+delta-up:   '--color-success + TrendingUp icon'
+delta-down: '--color-error  + TrendingDown icon'
+```
+
+**Rules:**
+
+- Caller formats `value` via `Intl.NumberFormat` — component does not format
+- `format` prop enriches ARIA label only: `currency` → `¥{value}`, `percent` → `{value}%`
+- Loading: two skeleton shimmer blocks; no spinner
+
+### DataTable
+
+Responsive sortable data table for lists of records (シフト一覧, FAXキュー).
+
+```tsx
+interface ColumnDef<T> {
+  key: keyof T
+  header: string
+  sortable?: boolean
+  render?: (value: T[keyof T], row: T) => ReactNode
+}
+
+interface DataTableProps<T extends object> {
+  columns: ColumnDef<T>[]
+  data: T[]
+  isLoading?: boolean
+  skeletonRowCount?: number   // default 5
+  emptyState?: ReactNode      // falls back to "まだデータがありません"
+}
+```
+
+**Rules:**
+
+- `<thead>` is sticky (`position: sticky; top: 0`, `--color-surface` background)
+- First column is sticky (`position: sticky; left: 0`) — preserves row identity on horizontal scroll
+- Right-edge fade gradient appears when content overflows horizontally (detected via `ResizeObserver`)
+- Sort cycle: unsorted → ascending → descending → unsorted (one column at a time)
+- Empty data with no `emptyState` prop: renders "まだデータがありません" centred
+- Loading: `skeletonRowCount` skeleton rows, header remains visible
+
+### ActivityTimeline
+
+Vertical chronological event list for processing history and change logs.
+
+```tsx
+interface TimelineEvent {
+  id: string
+  icon: ReactNode
+  description: string
+  timestamp: Date
+}
+
+interface ActivityTimelineProps {
+  events: TimelineEvent[]
+  order?: 'desc' | 'asc'   // default 'desc' (newest first)
+  isLoading?: boolean
+  skeletonCount?: number    // default 4
+}
+```
+
+**Rules:**
+
+- Connector line between events uses `--color-border`
+- Timestamps display relative time (e.g. `5分前`, `2時間前`, `昨日`) by default
+- Absolute date/time (via `Intl.DateTimeFormat('ja-JP', { dateStyle: 'full', timeStyle: 'short' })`) exposed via `title` attribute and `aria-label` on the `<time>` element
+- Loading: circular shimmer for icon + shimmer block for description; connector line remains visible
+
 ### Toast / Notifications
 
 Use `sonner` library (included in shadcn/ui setup).

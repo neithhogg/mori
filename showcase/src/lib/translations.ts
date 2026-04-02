@@ -113,6 +113,19 @@ export interface Translations {
   emptyFaxHeading: string
   emptyFaxDesc: string
   emptyFaxCta: string
+
+  // ── DataDisplaySection ───────────────────────────────────────────────────
+  sectionSubtitleDataDisplay: string
+  statCardShiftsLabel: string
+  statCardRevenueLabel: string
+  statCardFaxLabel: string
+  dataTableName: string
+  dataTableShift: string
+  dataTableDays: string
+  dataTableStatus: string
+  timelineEvent1: string
+  timelineEvent2: string
+  timelineEvent3: string
 }
 
 const ja: Translations = {
@@ -218,6 +231,18 @@ const ja: Translations = {
   emptyFaxHeading: 'まだFAXが届いていません',
   emptyFaxDesc: 'FAXが受信されると、ここに表示されます。',
   emptyFaxCta: '設定を確認する',
+
+  sectionSubtitleDataDisplay: 'データ表示',
+  statCardShiftsLabel: '本日の出勤数',
+  statCardRevenueLabel: '今月の売上',
+  statCardFaxLabel: '未処理のFAX',
+  dataTableName: '名前',
+  dataTableShift: 'シフト',
+  dataTableDays: '日数',
+  dataTableStatus: 'ステータス',
+  timelineEvent1: 'FAXを受信しました',
+  timelineEvent2: 'データを自動抽出しました',
+  timelineEvent3: '発注書を承認しました',
 }
 
 const en: Translations = {
@@ -325,6 +350,18 @@ const en: Translations = {
   emptyFaxHeading: 'No faxes received yet',
   emptyFaxDesc: 'Received faxes will appear here.',
   emptyFaxCta: 'Check Settings',
+
+  sectionSubtitleDataDisplay: 'Data Display',
+  statCardShiftsLabel: 'Staff on Shift Today',
+  statCardRevenueLabel: 'Monthly Revenue',
+  statCardFaxLabel: 'Unprocessed Faxes',
+  dataTableName: 'Name',
+  dataTableShift: 'Shift',
+  dataTableDays: 'Days',
+  dataTableStatus: 'Status',
+  timelineEvent1: 'Fax received',
+  timelineEvent2: 'Data auto-extracted',
+  timelineEvent3: 'Purchase order approved',
 }
 
 // zh-Hans copy is marked for human review per PROJECT.md conventions
@@ -431,6 +468,18 @@ const zhHans: Translations = {
   emptyFaxHeading: '暂未收到传真', // TODO: zh-Hans review
   emptyFaxDesc: '收到传真后将显示在这里。', // TODO: zh-Hans review
   emptyFaxCta: '检查设置', // TODO: zh-Hans review
+
+  sectionSubtitleDataDisplay: '数据展示', // TODO: zh-Hans review
+  statCardShiftsLabel: '今日出勤人数', // TODO: zh-Hans review
+  statCardRevenueLabel: '本月营业额', // TODO: zh-Hans review
+  statCardFaxLabel: '未处理传真', // TODO: zh-Hans review
+  dataTableName: '姓名', // TODO: zh-Hans review
+  dataTableShift: '班次', // TODO: zh-Hans review
+  dataTableDays: '天数', // TODO: zh-Hans review
+  dataTableStatus: '状态', // TODO: zh-Hans review
+  timelineEvent1: '收到传真', // TODO: zh-Hans review
+  timelineEvent2: '自动提取数据', // TODO: zh-Hans review
+  timelineEvent3: '已批准采购订单', // TODO: zh-Hans review
 }
 
 export const translations: Record<Locale, Translations> = {
