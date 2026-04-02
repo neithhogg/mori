@@ -1,3 +1,6 @@
+# Claude Code
+.claude/worktrees/
+
 # IDEs
 .idea/
 .vscode/
