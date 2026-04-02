@@ -2,10 +2,13 @@ import type { JSX } from 'react'
 import { Skeleton } from '@mori/components/ui/skeleton'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
+import { useT } from '../lib/useT'
 
 export function SkeletonSection(): JSX.Element {
+  const t = useT()
+
   return (
-    <SectionWrapper id="skeleton" num="05" titleEn="Skeleton" titleJa="ローディング">
+    <SectionWrapper id="skeleton" num="05" titleEn="Skeleton" titleJa={t.sectionSubtitleSkeleton}>
       <VarBlock label="Sizes">
         <div className="space-y-3">
           <Skeleton className="h-4 w-full" />
@@ -16,7 +19,7 @@ export function SkeletonSection(): JSX.Element {
         </div>
       </VarBlock>
 
-      <VarBlock label="Card Skeleton — 読み込み中のプレビュー">
+      <VarBlock label={t.skeletonCardLabel}>
         <div className="max-w-sm space-y-4">
           {[0, 1].map((i) => (
             <div

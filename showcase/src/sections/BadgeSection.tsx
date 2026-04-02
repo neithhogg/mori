@@ -3,19 +3,28 @@ import { Badge } from '@mori/components/ui/badge'
 import type { BadgeVariant } from '@mori/components/ui/badge'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
-
-const BADGES: { variant: BadgeVariant; label: string; desc: string }[] = [
-  { variant: 'green', label: '承認済', desc: 'green — success' },
-  { variant: 'amber', label: '保留中', desc: 'amber — warning' },
-  { variant: 'red', label: 'エラー', desc: 'red — error' },
-  { variant: 'blue', label: '情報', desc: 'blue — info' },
-  { variant: 'gray', label: 'アーカイブ', desc: 'gray — neutral' },
-  { variant: 'brand', label: 'ブランド', desc: 'brand — primary' },
-]
+import { useT } from '../lib/useT'
 
 export function BadgeSection(): JSX.Element {
+  const t = useT()
+
+  const BADGES: { variant: BadgeVariant; label: string; desc: string }[] = [
+    { variant: 'green', label: t.badgeLabelGreen, desc: 'green — success' },
+    { variant: 'amber', label: t.badgeLabelAmber, desc: 'amber — warning' },
+    { variant: 'red',   label: t.badgeLabelRed,   desc: 'red — error'    },
+    { variant: 'blue',  label: t.badgeLabelBlue,  desc: 'blue — info'    },
+    { variant: 'gray',  label: t.badgeLabelGray,  desc: 'gray — neutral' },
+    { variant: 'brand', label: t.badgeLabelBrand, desc: 'brand — primary' },
+  ]
+
+  const ROWS = [
+    { name: t.badgeRow1Name, shift: t.badgeRow1Shift, status: t.badgeRow1Status, variant: 'green' as BadgeVariant },
+    { name: t.badgeRow2Name, shift: t.badgeRow2Shift, status: t.badgeRow2Status, variant: 'amber' as BadgeVariant },
+    { name: t.badgeRow3Name, shift: t.badgeRow3Shift, status: t.badgeRow3Status, variant: 'red'   as BadgeVariant },
+  ]
+
   return (
-    <SectionWrapper id="badge" num="04" titleEn="Badge" titleJa="バッジ・タグ">
+    <SectionWrapper id="badge" num="04" titleEn="Badge" titleJa={t.sectionSubtitleBadge}>
       <VarBlock label="All Variants">
         <div className="flex flex-wrap gap-3">
           {BADGES.map(({ variant, label }) => (
@@ -26,28 +35,9 @@ export function BadgeSection(): JSX.Element {
         </div>
       </VarBlock>
 
-      <VarBlock label="In Context — シフト申請一覧">
+      <VarBlock label={t.badgeContextTitle}>
         <div className="space-y-3">
-          {[
-            {
-              name: '田中 花子',
-              shift: '月 09:00–17:00',
-              status: '承認済' as const,
-              variant: 'green' as BadgeVariant,
-            },
-            {
-              name: '鈴木 一郎',
-              shift: '火 10:00–18:00',
-              status: '保留中' as const,
-              variant: 'amber' as BadgeVariant,
-            },
-            {
-              name: '山田 次郎',
-              shift: '水 08:00–16:00',
-              status: 'エラー' as const,
-              variant: 'red' as BadgeVariant,
-            },
-          ].map((row) => (
+          {ROWS.map((row) => (
             <div
               key={row.name}
               className="flex items-center justify-between rounded-lg px-4 py-3"

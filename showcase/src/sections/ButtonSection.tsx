@@ -3,6 +3,7 @@ import { Button } from '@mori/components/ui/button'
 import type { ButtonVariant, ButtonSize } from '@mori/components/ui/button'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
+import { useT } from '../lib/useT'
 
 const VARIANTS: ButtonVariant[] = ['primary', 'secondary', 'ghost', 'destructive']
 const SIZES: ButtonSize[] = ['sm', 'md', 'lg']
@@ -21,8 +22,10 @@ const SIZE_LABELS: Record<ButtonSize, string> = {
 }
 
 export function ButtonSection(): JSX.Element {
+  const t = useT()
+
   return (
-    <SectionWrapper id="btn" num="01" titleEn="Button" titleJa="ボタン">
+    <SectionWrapper id="btn" num="01" titleEn="Button" titleJa={t.sectionSubtitleButton}>
       <VarBlock label="Variants">
         <div className="flex flex-wrap items-center gap-3">
           {VARIANTS.map((v) => (
@@ -37,7 +40,7 @@ export function ButtonSection(): JSX.Element {
         <div className="flex flex-wrap items-center gap-3">
           {SIZES.map((s) => (
             <Button key={s} size={s}>
-              サイズ {SIZE_LABELS[s]}
+              {SIZE_LABELS[s]}
             </Button>
           ))}
         </div>
@@ -45,13 +48,13 @@ export function ButtonSection(): JSX.Element {
 
       <VarBlock label="States — Loading & Disabled">
         <div className="flex flex-wrap items-center gap-3">
-          <Button isLoading>保存中</Button>
+          <Button isLoading>{t.btnLoading}</Button>
           <Button variant="secondary" isLoading>
-            送信中
+            {t.btnLoading}
           </Button>
-          <Button disabled>無効ボタン</Button>
+          <Button disabled>{t.btnDisabled}</Button>
           <Button variant="secondary" disabled>
-            無効
+            {t.btnDisabled}
           </Button>
         </div>
       </VarBlock>
@@ -88,7 +91,7 @@ export function ButtonSection(): JSX.Element {
                   {SIZES.map((s) => (
                     <td key={s} className="py-2 pr-6">
                       <Button variant={v} size={s}>
-                        操作
+                        {t.btnAction}
                       </Button>
                     </td>
                   ))}

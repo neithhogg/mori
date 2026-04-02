@@ -1,17 +1,20 @@
 import { useEffect, useState, type JSX } from 'react'
+import { LocaleSwitcher } from './LocaleSwitcher'
+import { useT } from '../lib/useT'
 
-const NAV_ITEMS = [
-  { id: 'btn', num: '01', en: 'Button', ja: 'ボタン' },
-  { id: 'input', num: '02', en: 'Input', ja: 'テキスト入力' },
-  { id: 'card', num: '03', en: 'Card', ja: 'カード' },
-  { id: 'badge', num: '04', en: 'Badge', ja: 'バッジ・タグ' },
-  { id: 'skeleton', num: '05', en: 'Skeleton', ja: 'ローディング' },
-  { id: 'dialog', num: '06', en: 'Dialog', ja: 'ダイアログ' },
-  { id: 'navigation', num: '07', en: 'Navigation', ja: 'ナビゲーション' },
-  { id: 'empty-state', num: '08', en: 'Empty State', ja: '空の状態' },
-]
+const NAV_KEYS = [
+  { id: 'btn',         num: '01', en: 'Button',      jaKey: 'sectionSubtitleButton'      },
+  { id: 'input',       num: '02', en: 'Input',       jaKey: 'sectionSubtitleInput'       },
+  { id: 'card',        num: '03', en: 'Card',        jaKey: 'sectionSubtitleCard'        },
+  { id: 'badge',       num: '04', en: 'Badge',       jaKey: 'sectionSubtitleBadge'       },
+  { id: 'skeleton',    num: '05', en: 'Skeleton',    jaKey: 'sectionSubtitleSkeleton'    },
+  { id: 'dialog',      num: '06', en: 'Dialog',      jaKey: 'sectionSubtitleDialog'      },
+  { id: 'navigation',  num: '07', en: 'Navigation',  jaKey: 'sectionSubtitleNavigation'  },
+  { id: 'empty-state', num: '08', en: 'Empty State', jaKey: 'sectionSubtitleEmptyState'  },
+] as const
 
 export function ShowcaseSidebar(): JSX.Element {
+  const t = useT()
   const [activeId, setActiveId] = useState('btn')
 
   useEffect(() => {
@@ -23,7 +26,7 @@ export function ShowcaseSidebar(): JSX.Element {
       },
       { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' }
     )
-    NAV_ITEMS.forEach(({ id }) => {
+    NAV_KEYS.forEach(({ id }) => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
@@ -62,6 +65,11 @@ export function ShowcaseSidebar(): JSX.Element {
             </p>
           </div>
         </div>
+
+        {/* Locale switcher */}
+        <div className="mt-4">
+          <LocaleSwitcher />
+        </div>
       </div>
 
       {/* Nav */}
@@ -70,9 +78,9 @@ export function ShowcaseSidebar(): JSX.Element {
           className="px-3 pb-3 text-[0.625rem] font-semibold tracking-[0.14em] uppercase"
           style={{ color: 'var(--color-ink-tertiary)' }}
         >
-          コンポーネント一覧
+          {t.sidebarComponentList}
         </p>
-        {NAV_ITEMS.map((item) => {
+        {NAV_KEYS.map((item) => {
           const isActive = activeId === item.id
           return (
             <a
@@ -98,7 +106,7 @@ export function ShowcaseSidebar(): JSX.Element {
                   className="mt-0.5 block text-[0.625rem] leading-none"
                   style={{ color: isActive ? 'var(--color-brand)' : 'var(--color-ink-tertiary)' }}
                 >
-                  {item.ja}
+                  {t[item.jaKey]}
                 </span>
               </span>
             </a>
@@ -114,7 +122,7 @@ export function ShowcaseSidebar(): JSX.Element {
           color: 'var(--color-ink-tertiary)',
         }}
       >
-        自然・簡単・信頼
+        {t.sidebarTagline}
       </div>
     </aside>
   )

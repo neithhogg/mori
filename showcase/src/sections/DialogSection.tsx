@@ -3,6 +3,7 @@ import { Dialog } from '@mori/components/ui/dialog'
 import { Button } from '@mori/components/ui/button'
 import { SectionWrapper } from '../components/SectionWrapper'
 import { VarBlock } from '../components/VarBlock'
+import { useT } from '../lib/useT'
 
 // Static panel preview — renders the dialog panel visually without using the native <dialog>
 // element or showModal(), so it fits inline in the showcase without modal behaviour.
@@ -48,197 +49,172 @@ function DialogPreview({
 }
 
 export function DialogSection(): JSX.Element {
+  const t = useT()
   const [defaultOpen, setDefaultOpen] = useState(false)
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [destructiveOpen, setDestructiveOpen] = useState(false)
   const [loadingOpen, setLoadingOpen] = useState(false)
 
   return (
-    <SectionWrapper id="dialog" num="06" titleEn="Dialog" titleJa="ダイアログ">
+    <SectionWrapper id="dialog" num="06" titleEn="Dialog" titleJa={t.sectionSubtitleDialog}>
       <VarBlock label="default — Custom Footer">
         <div className="flex flex-wrap items-start gap-6">
           <DialogPreview
-            title="シフトを編集"
-            subtitle="2024年3月15日（金）の変更内容を確認してください。"
+            title={t.dialogDefaultTitle}
+            subtitle={t.dialogDefaultSubtitle}
             footer={
               <>
                 <Button variant="secondary" size="sm">
-                  キャンセル
+                  {t.dialogCancel}
                 </Button>
-                <Button size="sm">保存する</Button>
+                <Button size="sm">{t.dialogSave}</Button>
               </>
             }
           >
-            編集内容がここに表示されます。
+            {t.dialogDefaultBody}
           </DialogPreview>
           <div className="flex items-center">
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                setDefaultOpen(true)
-              }}
+              onClick={() => { setDefaultOpen(true) }}
             >
-              ライブデモを開く →
+              {t.dialogLiveDemo}
             </Button>
           </div>
         </div>
         <Dialog
           open={defaultOpen}
-          onClose={() => {
-            setDefaultOpen(false)
-          }}
-          title="シフトを編集"
-          subtitle="2024年3月15日（金）の変更内容を確認してください。"
+          onClose={() => { setDefaultOpen(false) }}
+          title={t.dialogDefaultTitle}
+          subtitle={t.dialogDefaultSubtitle}
           footer={
-            <Button
-              onClick={() => {
-                setDefaultOpen(false)
-              }}
-            >
-              保存する
+            <Button onClick={() => { setDefaultOpen(false) }}>
+              {t.dialogSave}
             </Button>
           }
         >
-          <p>編集フォームの内容がここに入ります。</p>
+          <p>{t.dialogDefaultBody}</p>
         </Dialog>
       </VarBlock>
 
-      <VarBlock label="confirm — キャンセル + アクション">
+      <VarBlock label={`confirm — ${t.dialogCancel} + action`}>
         <div className="flex flex-wrap items-start gap-6">
           <DialogPreview
-            title="変更を保存しますか？"
+            title={t.dialogConfirmTitle}
             footer={
               <>
                 <Button variant="secondary" size="sm">
-                  キャンセル
+                  {t.dialogCancel}
                 </Button>
-                <Button size="sm">保存する</Button>
+                <Button size="sm">{t.dialogSave}</Button>
               </>
             }
           >
-            保存されていない変更があります。このまま続けると変更が失われます。
+            {t.dialogConfirmBody}
           </DialogPreview>
           <div className="flex items-center">
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                setConfirmOpen(true)
-              }}
+              onClick={() => { setConfirmOpen(true) }}
             >
-              ライブデモを開く →
+              {t.dialogLiveDemo}
             </Button>
           </div>
         </div>
         <Dialog
           open={confirmOpen}
-          onClose={() => {
-            setConfirmOpen(false)
-          }}
+          onClose={() => { setConfirmOpen(false) }}
           variant="confirm"
-          title="変更を保存しますか？"
-          actionLabel="保存する"
-          onAction={() => {
-            setConfirmOpen(false)
-          }}
+          title={t.dialogConfirmTitle}
+          actionLabel={t.dialogSave}
+          onAction={() => { setConfirmOpen(false) }}
         >
-          保存されていない変更があります。このまま続けると変更が失われます。
+          {t.dialogConfirmBody}
         </Dialog>
       </VarBlock>
 
-      <VarBlock label="confirm + destructive — 取り消し不能な操作">
+      <VarBlock label="confirm + destructive">
         <div className="flex flex-wrap items-start gap-6">
           <DialogPreview
-            title="スタッフを削除"
+            title={t.dialogDestructiveTitle}
             footer={
               <>
                 <Button variant="secondary" size="sm">
-                  キャンセル
+                  {t.dialogCancel}
                 </Button>
                 <Button variant="destructive" size="sm">
-                  削除する
+                  {t.dialogDelete}
                 </Button>
               </>
             }
           >
             <p className="mb-2 font-medium" style={{ color: 'var(--color-ink)' }}>
-              この操作は取り消せません。
+              {t.dialogDestructiveWarning}
             </p>
-            田中 花子 さんのアカウントと全データが完全に削除されます。
+            {t.dialogDestructiveBody}
           </DialogPreview>
           <div className="flex items-center">
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                setDestructiveOpen(true)
-              }}
+              onClick={() => { setDestructiveOpen(true) }}
             >
-              ライブデモを開く →
+              {t.dialogLiveDemo}
             </Button>
           </div>
         </div>
         <Dialog
           open={destructiveOpen}
-          onClose={() => {
-            setDestructiveOpen(false)
-          }}
+          onClose={() => { setDestructiveOpen(false) }}
           variant="confirm"
-          title="スタッフを削除"
-          actionLabel="削除する"
+          title={t.dialogDestructiveTitle}
+          actionLabel={t.dialogDelete}
           destructive
-          onAction={() => {
-            setDestructiveOpen(false)
-          }}
+          onAction={() => { setDestructiveOpen(false) }}
         >
-          田中 花子 さんのアカウントと全データが完全に削除されます。
+          {t.dialogDestructiveBody}
         </Dialog>
       </VarBlock>
 
-      <VarBlock label="isLoading — 処理中の状態">
+      <VarBlock label="isLoading">
         <div className="flex flex-wrap items-start gap-6">
           <DialogPreview
-            title="請求情報を更新中"
+            title={t.dialogLoadingTitle}
             footer={
               <>
                 <Button variant="secondary" size="sm" disabled>
-                  キャンセル
+                  {t.dialogCancel}
                 </Button>
                 <Button isLoading size="sm">
-                  更新する
+                  {t.dialogUpdate}
                 </Button>
               </>
             }
           >
-            クレジットカード情報を処理しています。しばらくお待ちください。
+            {t.dialogLoadingBody}
           </DialogPreview>
           <div className="flex items-center">
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                setLoadingOpen(true)
-              }}
+              onClick={() => { setLoadingOpen(true) }}
             >
-              ライブデモを開く →
+              {t.dialogLiveDemo}
             </Button>
           </div>
         </div>
         <Dialog
           open={loadingOpen}
-          onClose={() => {
-            setLoadingOpen(false)
-          }}
+          onClose={() => { setLoadingOpen(false) }}
           variant="confirm"
-          title="請求情報を更新中"
-          actionLabel="更新する"
+          title={t.dialogLoadingTitle}
+          actionLabel={t.dialogUpdate}
           isLoading
-          onAction={() => {
-            setLoadingOpen(false)
-          }}
+          onAction={() => { setLoadingOpen(false) }}
         >
-          クレジットカード情報を処理しています。しばらくお待ちください。
+          {t.dialogLoadingBody}
         </Dialog>
       </VarBlock>
     </SectionWrapper>
