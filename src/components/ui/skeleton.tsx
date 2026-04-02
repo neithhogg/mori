@@ -10,7 +10,7 @@ export function Skeleton({ className, ...props }: SkeletonProps): JSX.Element {
   return (
     <div
       {...props}
-      className={cn('animate-pulse rounded-[--radius-md] bg-[--color-surface-sunken]', className)}
+      className={cn('animate-pulse rounded-(--radius-md) bg-(--color-surface-sunken)', className)}
     />
   )
 }

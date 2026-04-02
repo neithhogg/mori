@@ -7,12 +7,12 @@ export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   variant?: CardVariant
 }
 
-const BASE = 'bg-[--color-surface] border border-[--color-border] rounded-[--radius-lg] p-6'
+const BASE = 'bg-(--color-surface) border border-(--color-border) rounded-(--radius-lg) p-6'
 
 const VARIANT_CLASSES: Record<CardVariant, string> = {
   base: '',
-  interactive: 'cursor-pointer transition-shadow duration-200 hover:shadow-[--shadow-md]',
-  highlighted: 'border-[--color-brand] border-2',
+  interactive: 'cursor-pointer transition-shadow duration-200 hover:shadow-(--shadow-md)',
+  highlighted: 'border-(--color-brand) border-2',
 }
 
 export function Card({ variant = 'base', className, children, ...props }: CardProps): JSX.Element {

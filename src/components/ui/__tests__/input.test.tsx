@@ -7,7 +7,7 @@ describe('Input', () => {
     it('applies sunken background class', () => {
       const { container } = render(<Input />)
       const input = container.querySelector('input')
-      expect(input?.className).toContain('bg-[--color-surface-sunken]')
+      expect(input?.className).toContain('bg-(--color-surface-sunken)')
     })
 
     it('applies full width class', () => {
@@ -47,12 +47,12 @@ describe('Input', () => {
   describe('error state', () => {
     it('applies error border class when error prop provided', () => {
       const { container } = render(<Input error="必須項目です" />)
-      expect(container.querySelector('input')?.className).toContain('border-[--color-error]')
+      expect(container.querySelector('input')?.className).toContain('border-(--color-error)')
     })
 
     it('applies error focus ring class when error prop provided', () => {
       const { container } = render(<Input error="必須項目です" />)
-      expect(container.querySelector('input')?.className).toContain('focus:ring-[--color-error]')
+      expect(container.querySelector('input')?.className).toContain('focus:ring-(--color-error)')
     })
 
     it('renders error message below input', () => {

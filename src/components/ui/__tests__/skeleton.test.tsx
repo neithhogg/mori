@@ -12,13 +12,13 @@ describe('Skeleton', () => {
     it('applies sunken background token', () => {
       const { container } = render(<Skeleton />)
       expect((container.firstChild as HTMLElement).className).toContain(
-        'bg-[--color-surface-sunken]'
+        'bg-(--color-surface-sunken)'
       )
     })
 
     it('applies medium radius token', () => {
       const { container } = render(<Skeleton />)
-      expect((container.firstChild as HTMLElement).className).toContain('rounded-[--radius-md]')
+      expect((container.firstChild as HTMLElement).className).toContain('rounded-(--radius-md)')
     })
 
     it('does not use a spinner or rotation animation', () => {

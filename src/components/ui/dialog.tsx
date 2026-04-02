@@ -111,12 +111,12 @@ export function Dialog(props: DialogProps): JSX.Element {
         <div
           className={cn(
             // Panel base
-            'pointer-events-auto relative w-full bg-[--color-surface]',
-            'border border-[--color-border] shadow-[--shadow-lg]',
+            'pointer-events-auto relative w-full bg-(--color-surface)',
+            'border border-(--color-border) shadow-(--shadow-lg)',
             // Mobile: bottom sheet — slides up from bottom edge
-            'rounded-t-[--radius-xl] rounded-b-none',
+            'rounded-t-(--radius-xl) rounded-b-none',
             // Desktop: centered card
-            'md:max-w-md md:rounded-[--radius-xl]',
+            'md:max-w-md md:rounded-(--radius-xl)',
             className
           )}
           // Stop click propagation so panel clicks don't reach the overlay handler.
@@ -126,19 +126,19 @@ export function Dialog(props: DialogProps): JSX.Element {
         >
           {/* Header */}
           <div className="px-6 pt-6 pb-2">
-            <h2 id={titleId} className="font-[--font-semibold] text-lg text-[--color-ink]">
+            <h2 id={titleId} className="font-(--font-semibold) text-lg text-(--color-ink)">
               {title}
             </h2>
             {subtitle !== undefined && (
-              <p className="mt-1 text-sm text-[--color-ink-secondary]">{subtitle}</p>
+              <p className="mt-1 text-sm text-(--color-ink-secondary)">{subtitle}</p>
             )}
           </div>
 
           {/* Body */}
-          <div className="px-6 py-4 text-sm leading-relaxed text-[--color-ink-secondary]">
+          <div className="px-6 py-4 text-sm leading-relaxed text-(--color-ink-secondary)">
             {/* Destructive confirm always includes the 取り消し不能 notice */}
             {isConfirm && props.destructive === true && (
-              <p className="mb-3 text-[--color-ink]">この操作は取り消せません。</p>
+              <p className="mb-3 text-(--color-ink)">この操作は取り消せません。</p>
             )}
             {children}
           </div>

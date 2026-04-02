@@ -51,13 +51,13 @@ describe('BottomTabBar', () => {
     it('active tab has brand text color', () => {
       render(<BottomTabBar items={tabItems} />)
       const homeBtn = screen.getByRole('button', { name: /ホーム/ })
-      expect(homeBtn.className).toContain('text-[--color-brand]')
+      expect(homeBtn.className).toContain('text-(--color-brand)')
     })
 
     it('inactive tab has tertiary text color', () => {
       render(<BottomTabBar items={tabItems} />)
       const shiftBtn = screen.getByRole('button', { name: /シフト/ })
-      expect(shiftBtn.className).toContain('text-[--color-ink-tertiary]')
+      expect(shiftBtn.className).toContain('text-(--color-ink-tertiary)')
     })
 
     it('active tab has aria-current="page"', () => {
@@ -126,15 +126,15 @@ describe('Sidebar', () => {
     it('active item has brand-light background', () => {
       render(<Sidebar items={sidebarItems} />)
       const activeBtn = screen.getByRole('button', { name: /シフト管理/ })
-      expect(activeBtn.className).toContain('bg-[--color-brand-light]')
-      expect(activeBtn.className).toContain('text-[--color-brand-dark]')
+      expect(activeBtn.className).toContain('bg-(--color-brand-light)')
+      expect(activeBtn.className).toContain('text-(--color-brand-dark)')
     })
 
     it('inactive item has hover style', () => {
       render(<Sidebar items={sidebarItems} />)
       const inactiveBtn = screen.getByRole('button', { name: /スタッフ一覧/ })
-      expect(inactiveBtn.className).toContain('hover:bg-[--color-surface-raised]')
-      expect(inactiveBtn.className).toContain('text-[--color-ink-secondary]')
+      expect(inactiveBtn.className).toContain('hover:bg-(--color-surface-raised)')
+      expect(inactiveBtn.className).toContain('text-(--color-ink-secondary)')
     })
 
     it('active item has aria-current="page"', () => {

@@ -28,7 +28,7 @@ export function BottomTabBar({ items, className }: BottomTabBarProps): JSX.Eleme
       aria-label="タブナビゲーション"
       className={cn(
         'fixed right-0 bottom-0 left-0 h-[60px]',
-        'border-t border-[--color-border] bg-[--color-surface]',
+        'border-t border-(--color-border) bg-(--color-surface)',
         'flex items-stretch',
         className
       )}
@@ -47,8 +47,8 @@ export function BottomTabBar({ items, className }: BottomTabBarProps): JSX.Eleme
               'min-h-[44px] px-3 py-2',
               'text-[0.625rem] transition-colors duration-200',
               item.isActive === true
-                ? 'font-[--font-medium] text-[--color-brand]'
-                : 'text-[--color-ink-tertiary]'
+                ? 'font-(--font-medium) text-(--color-brand)'
+                : 'text-(--color-ink-tertiary)'
             )}
           >
             <Icon className="h-[22px] w-[22px]" aria-hidden="true" />
@@ -92,10 +92,10 @@ export function Sidebar({ items, className }: SidebarProps): JSX.Element {
             aria-current={item.isActive === true ? 'page' : undefined}
             className={cn(
               'flex w-full items-center gap-3 px-3 py-2',
-              'rounded-[--radius-md] text-sm transition-colors duration-150',
+              'rounded-(--radius-md) text-sm transition-colors duration-150',
               item.isActive === true
-                ? 'bg-[--color-brand-light] font-[--font-medium] text-[--color-brand-dark]'
-                : 'text-[--color-ink-secondary] hover:bg-[--color-surface-raised]'
+                ? 'bg-(--color-brand-light) font-(--font-medium) text-(--color-brand-dark)'
+                : 'text-(--color-ink-secondary) hover:bg-(--color-surface-raised)'
             )}
           >
             <Icon className="h-[18px] w-[18px] flex-shrink-0" aria-hidden="true" />

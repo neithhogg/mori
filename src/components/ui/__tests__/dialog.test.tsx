@@ -102,7 +102,7 @@ describe('Dialog', () => {
     it('panel has rounded-t and rounded-b-none for mobile bottom-sheet', () => {
       render(<Dialog {...defaultProps} />)
       const panel = document.querySelector('[class*="rounded-t-"]') as HTMLElement
-      expect(panel?.className).toContain('rounded-t-[--radius-xl]')
+      expect(panel?.className).toContain('rounded-t-(--radius-xl)')
       expect(panel?.className).toContain('rounded-b-none')
     })
   })

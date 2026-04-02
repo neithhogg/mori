@@ -6,12 +6,12 @@ describe('Button', () => {
   describe('variants', () => {
     it('primary variant applies brand background', () => {
       render(<Button variant="primary">保存する</Button>)
-      expect(screen.getByRole('button').className).toContain('bg-[--color-brand]')
+      expect(screen.getByRole('button').className).toContain('bg-(--color-brand)')
     })
 
     it('secondary variant applies border', () => {
       render(<Button variant="secondary">キャンセル</Button>)
-      expect(screen.getByRole('button').className).toContain('border-[--color-border]')
+      expect(screen.getByRole('button').className).toContain('border-(--color-border)')
     })
 
     it('ghost variant is transparent', () => {
@@ -21,12 +21,12 @@ describe('Button', () => {
 
     it('destructive variant uses error color', () => {
       render(<Button variant="destructive">削除する</Button>)
-      expect(screen.getByRole('button').className).toContain('bg-[--color-error]')
+      expect(screen.getByRole('button').className).toContain('bg-(--color-error)')
     })
 
     it('defaults to primary when no variant provided', () => {
       render(<Button>保存する</Button>)
-      expect(screen.getByRole('button').className).toContain('bg-[--color-brand]')
+      expect(screen.getByRole('button').className).toContain('bg-(--color-brand)')
     })
   })
 
@@ -88,7 +88,7 @@ describe('Button', () => {
       render(<Button className="w-full">保存する</Button>)
       const btn = screen.getByRole('button')
       expect(btn.className).toContain('w-full')
-      expect(btn.className).toContain('bg-[--color-brand]')
+      expect(btn.className).toContain('bg-(--color-brand)')
     })
   })
 })

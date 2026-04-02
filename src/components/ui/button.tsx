@@ -12,11 +12,11 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 }
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: 'bg-[--color-brand] text-white hover:bg-[--color-brand-dark]',
+  primary: 'bg-(--color-brand) text-white hover:bg-(--color-brand-dark)',
   secondary:
-    'bg-white border border-[--color-border] text-[--color-ink] hover:bg-[--color-surface-raised]',
-  ghost: 'bg-transparent text-[--color-ink-secondary] hover:bg-[--color-surface-raised]',
-  destructive: 'bg-[--color-error] text-white hover:opacity-90',
+    'bg-white border border-(--color-border) text-(--color-ink) hover:bg-(--color-surface-raised)',
+  ghost: 'bg-transparent text-(--color-ink-secondary) hover:bg-(--color-surface-raised)',
+  destructive: 'bg-(--color-error) text-white hover:opacity-90',
 }
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
@@ -26,9 +26,9 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
 }
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 font-medium rounded-[--radius-md] ' +
+  'inline-flex items-center justify-center gap-2 font-medium rounded-(--radius-md) ' +
   'transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ' +
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-brand]'
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand)'
 
 export function Button({
   variant = 'primary',

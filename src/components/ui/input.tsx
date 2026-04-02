@@ -9,14 +9,14 @@ export interface InputProps extends ComponentPropsWithoutRef<'input'> {
 }
 
 const BASE =
-  'w-full h-10 px-3 bg-[--color-surface-sunken] border border-[--color-border] ' +
-  'rounded-[--radius-md] text-sm text-[--color-ink] placeholder:text-[--color-ink-tertiary] ' +
+  'w-full h-10 px-3 bg-(--color-surface-sunken) border border-(--color-border) ' +
+  'rounded-(--radius-md) text-sm text-(--color-ink) placeholder:text-(--color-ink-tertiary) ' +
   'transition-colors duration-200 ' +
-  'focus:outline-none focus:border-[--color-brand] focus:ring-1 focus:ring-[--color-brand] ' +
+  'focus:outline-none focus:border-(--color-brand) focus:ring-1 focus:ring-(--color-brand) ' +
   'disabled:opacity-50 disabled:cursor-not-allowed'
 
 const ERROR_CLASSES =
-  'border-[--color-error] focus:border-[--color-error] focus:ring-[--color-error]'
+  'border-(--color-error) focus:border-(--color-error) focus:ring-(--color-error)'
 
 export function Input({
   label,
@@ -34,7 +34,7 @@ export function Input({
       {label !== undefined && (
         <label
           htmlFor={inputId}
-          className="font-[--font-medium] text-sm text-[--color-ink-secondary]"
+          className="font-(--font-medium) text-sm text-(--color-ink-secondary)"
         >
           {label}
         </label>
@@ -45,12 +45,12 @@ export function Input({
         className={cn(BASE, error !== undefined && ERROR_CLASSES, className)}
       />
       {error !== undefined && (
-        <p className="text-xs text-[--color-error]" role="alert">
+        <p className="text-xs text-(--color-error)" role="alert">
           {error}
         </p>
       )}
       {helperText !== undefined && (
-        <p className="text-xs text-[--color-ink-tertiary]">{helperText}</p>
+        <p className="text-xs text-(--color-ink-tertiary)">{helperText}</p>
       )}
     </div>
   )
