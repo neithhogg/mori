@@ -1,6 +1,6 @@
 # Project Journal
 
-_Last updated: 2026-03-31_
+_Last updated: 2026-04-02_
 
 ## Current
 
@@ -10,6 +10,10 @@ _Last updated: 2026-03-31_
 - [x] OpenSpec CLI (@fission-ai/openspec v1.2.0) installed
 - [x] Core component library — Button, Input, Card, Badge, Skeleton, Dialog, BottomTabBar, Sidebar (160 Vitest tests)
 - [x] React-powered component showcase (`pnpm dev`) — all 7 components with live interactive demos
+- [x] Data display components — StatCard, DataTable, ActivityTimeline (added 2026-04-02)
+  - **Card padding change**: `p-6` → `p-4 sm:p-5` (mobile 16px / desktop 20px) to align with StatCard's surface treatment. Visual-only; no API change.
+  - DataTable uses sticky header + sticky first column + horizontal scroll for mobile data density
+  - ActivityTimeline uses `Intl.RelativeTimeFormat('ja-JP')` for relative timestamps; absolute in `aria-label`/`title`
 
 ## Future
 

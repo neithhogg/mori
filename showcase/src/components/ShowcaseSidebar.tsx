@@ -10,7 +10,8 @@ const NAV_KEYS = [
   { id: 'skeleton',    num: '05', en: 'Skeleton',    jaKey: 'sectionSubtitleSkeleton'    },
   { id: 'dialog',      num: '06', en: 'Dialog',      jaKey: 'sectionSubtitleDialog'      },
   { id: 'navigation',  num: '07', en: 'Navigation',  jaKey: 'sectionSubtitleNavigation'  },
-  { id: 'empty-state', num: '08', en: 'Empty State', jaKey: 'sectionSubtitleEmptyState'  },
+  { id: 'empty-state',   num: '08', en: 'Empty State',   jaKey: 'sectionSubtitleEmptyState'   },
+  { id: 'data-display',  num: '09', en: 'Data Display',  jaKey: 'sectionSubtitleDataDisplay'  },
 ] as const
 
 export function ShowcaseSidebar(): JSX.Element {
