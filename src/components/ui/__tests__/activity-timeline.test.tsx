@@ -6,20 +6,21 @@ const now = new Date()
 const fiveMinAgo = new Date(now.getTime() - 5 * 60 * 1000)
 const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000)
 
-const events: TimelineEvent[] = [
-  {
-    id: '1',
-    icon: <span>📄</span>,
-    description: 'FAXを受信しました',
-    timestamp: fiveMinAgo,
-  },
-  {
-    id: '2',
-    icon: <span>✅</span>,
-    description: 'データを抽出しました',
-    timestamp: twoHoursAgo,
-  },
-]
+const eventFax: TimelineEvent = {
+  id: '1',
+  icon: <span>📄</span>,
+  description: 'FAXを受信しました',
+  timestamp: fiveMinAgo,
+}
+
+const eventExtract: TimelineEvent = {
+  id: '2',
+  icon: <span>✅</span>,
+  description: 'データを抽出しました',
+  timestamp: twoHoursAgo,
+}
+
+const events: TimelineEvent[] = [eventFax, eventExtract]
 
 describe('ActivityTimeline', () => {
   describe('event render', () => {
@@ -39,32 +40,34 @@ describe('ActivityTimeline', () => {
   describe('order', () => {
     it('desc order renders newest event first (default)', () => {
       render(<ActivityTimeline events={events} />)
-      const items = screen.getAllByRole('listitem')
-      expect(items[0]!.textContent).toContain('FAXを受信しました')
+      const [first] = screen.getAllByRole('listitem')
+      if (!first) throw new Error('no listitem found')
+      expect(first.textContent).toContain('FAXを受信しました')
     })
 
     it('asc order renders oldest event first', () => {
       render(<ActivityTimeline events={events} order="asc" />)
-      const items = screen.getAllByRole('listitem')
-      expect(items[0]!.textContent).toContain('データを抽出しました')
+      const [first] = screen.getAllByRole('listitem')
+      if (!first) throw new Error('no listitem found')
+      expect(first.textContent).toContain('データを抽出しました')
     })
   })
 
   describe('relative timestamp', () => {
     it('shows "5分前" for an event 5 minutes ago', () => {
-      render(<ActivityTimeline events={[events[0]!]} />)
+      render(<ActivityTimeline events={[eventFax]} />)
       expect(screen.getByText('5分前')).toBeInTheDocument()
     })
 
     it('shows "2時間前" for an event 2 hours ago', () => {
-      render(<ActivityTimeline events={[events[1]!]} />)
+      render(<ActivityTimeline events={[eventExtract]} />)
       expect(screen.getByText('2時間前')).toBeInTheDocument()
     })
   })
 
   describe('aria-label on timestamp', () => {
     it('includes absolute Japanese date/time in aria-label', () => {
-      render(<ActivityTimeline events={[events[0]!]} />)
+      render(<ActivityTimeline events={[eventFax]} />)
       const timeEl = screen.getByRole('time')
       // aria-label should be the full formatted date string
       const ariaLabel = timeEl.getAttribute('aria-label') ?? ''
@@ -73,7 +76,7 @@ describe('ActivityTimeline', () => {
     })
 
     it('sets title attribute equal to aria-label', () => {
-      render(<ActivityTimeline events={[events[0]!]} />)
+      render(<ActivityTimeline events={[eventFax]} />)
       const timeEl = screen.getByRole('time')
       expect(timeEl.getAttribute('title')).toBe(timeEl.getAttribute('aria-label'))
     })
