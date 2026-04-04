@@ -58,7 +58,7 @@ describe('DataTable', () => {
       const cells = screen
         .getAllByRole('cell')
         .filter((c) => ['田中 花子', '山田 次郎', '鈴木 一郎'].includes(c.textContent ?? ''))
-      expect(cells[0].textContent).toBe('山田 次郎') // ア行
+      expect(cells[0]!.textContent).toBe('山田 次郎') // ア行
     })
 
     it('sorts descending on second click', () => {
@@ -70,7 +70,7 @@ describe('DataTable', () => {
       const cells = screen
         .getAllByRole('cell')
         .filter((c) => ['5', '3', '7'].includes(c.textContent ?? ''))
-      expect(cells[0].textContent).toBe('7')
+      expect(cells[0]!.textContent).toBe('7')
     })
 
     it('clears sort on third click', () => {
@@ -82,7 +82,7 @@ describe('DataTable', () => {
       fireEvent.click(th)
       // After clearing, original order: 田中, 鈴木, 山田
       const rows = screen.getAllByRole('row').slice(1) // skip header
-      expect(rows[0].textContent).toContain('田中 花子')
+      expect(rows[0]!.textContent).toContain('田中 花子')
     })
 
     it('sets aria-sort ascending after first click', () => {

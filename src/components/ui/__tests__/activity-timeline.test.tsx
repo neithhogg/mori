@@ -40,31 +40,31 @@ describe('ActivityTimeline', () => {
     it('desc order renders newest event first (default)', () => {
       render(<ActivityTimeline events={events} />)
       const items = screen.getAllByRole('listitem')
-      expect(items[0].textContent).toContain('FAXを受信しました')
+      expect(items[0]!.textContent).toContain('FAXを受信しました')
     })
 
     it('asc order renders oldest event first', () => {
       render(<ActivityTimeline events={events} order="asc" />)
       const items = screen.getAllByRole('listitem')
-      expect(items[0].textContent).toContain('データを抽出しました')
+      expect(items[0]!.textContent).toContain('データを抽出しました')
     })
   })
 
   describe('relative timestamp', () => {
     it('shows "5分前" for an event 5 minutes ago', () => {
-      render(<ActivityTimeline events={[events[0]]} />)
+      render(<ActivityTimeline events={[events[0]!]} />)
       expect(screen.getByText('5分前')).toBeInTheDocument()
     })
 
     it('shows "2時間前" for an event 2 hours ago', () => {
-      render(<ActivityTimeline events={[events[1]]} />)
+      render(<ActivityTimeline events={[events[1]!]} />)
       expect(screen.getByText('2時間前')).toBeInTheDocument()
     })
   })
 
   describe('aria-label on timestamp', () => {
     it('includes absolute Japanese date/time in aria-label', () => {
-      render(<ActivityTimeline events={[events[0]]} />)
+      render(<ActivityTimeline events={[events[0]!]} />)
       const timeEl = screen.getByRole('time')
       // aria-label should be the full formatted date string
       const ariaLabel = timeEl.getAttribute('aria-label') ?? ''
@@ -73,7 +73,7 @@ describe('ActivityTimeline', () => {
     })
 
     it('sets title attribute equal to aria-label', () => {
-      render(<ActivityTimeline events={[events[0]]} />)
+      render(<ActivityTimeline events={[events[0]!]} />)
       const timeEl = screen.getByRole('time')
       expect(timeEl.getAttribute('title')).toBe(timeEl.getAttribute('aria-label'))
     })
