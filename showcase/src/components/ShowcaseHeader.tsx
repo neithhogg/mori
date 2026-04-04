@@ -2,9 +2,9 @@ import type { JSX } from 'react'
 import { useT } from '../lib/useT'
 
 const STATS = [
-  { value: '7',  labelKey: 'statComponents' as const },
-  { value: '48', labelKey: 'statTokens'     as const },
-  { value: '2',  labelKey: 'statProducts'   as const },
+  { value: '7', labelKey: 'statComponents' as const },
+  { value: '48', labelKey: 'statTokens' as const },
+  { value: '2', labelKey: 'statProducts' as const },
 ]
 
 export function ShowcaseHeader(): JSX.Element {

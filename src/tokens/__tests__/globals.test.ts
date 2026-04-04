@@ -79,6 +79,23 @@ const MOTION_TOKENS = [
   '--ease-out',
 ] as const // 6 motion tokens
 
+const INTERACTIVE_STATE_TOKENS = [
+  '--focus-ring-color',
+  '--focus-ring-width',
+  '--focus-ring-offset',
+  '--opacity-disabled',
+  '--color-surface-overlay',
+] as const // 5 interactive-state tokens
+
+const Z_INDEX_TOKENS = [
+  '--z-base',
+  '--z-dropdown',
+  '--z-sticky',
+  '--z-overlay',
+  '--z-modal',
+  '--z-toast',
+] as const // 6 z-index tokens
+
 const ALL_TOKENS = [
   ...COLOUR_TOKENS,
   ...TYPOGRAPHY_TOKENS,
@@ -86,7 +103,9 @@ const ALL_TOKENS = [
   ...RADIUS_TOKENS,
   ...SHADOW_TOKENS,
   ...MOTION_TOKENS,
-]
+  ...INTERACTIVE_STATE_TOKENS,
+  ...Z_INDEX_TOKENS,
+] // 71 tokens total: 19 + 17 + 10 + 5 + 3 + 6 + 5 + 6
 
 describe('src/tokens/globals.css', () => {
   let css: string
@@ -137,11 +156,13 @@ describe('src/tokens/globals.css', () => {
       expect(css).toContain(`${token}:`)
     })
 
-    it('total token count matches PROJECT.md specification', () => {
+    it('total token count matches specification', () => {
       // Count unique CSS custom property declarations in the file.
+      // Tokens redefined in [data-theme="dark"] collapse into the same unique names.
+      // Expected: 19 colour + 17 typography + 10 spacing + 5 radius + 3 shadow +
+      //           6 motion + 5 interactive-state + 6 z-index = 71
       const matches = css.match(/--[\w-]+:/g) ?? []
       const unique = new Set(matches)
-      // 19 colour + 17 typography + 10 spacing + 5 radius + 3 shadow + 6 motion = 60
       expect(unique.size).toBe(ALL_TOKENS.length)
     })
   })
@@ -151,12 +172,32 @@ describe('src/tokens/globals.css', () => {
       css = readFileSync(TOKEN_FILE, 'utf-8')
     })
 
-    it('all hex colour values live exclusively inside the :root block', () => {
-      // Strip the :root { … } block, then check the remainder has no hex colours.
-      const withoutRoot = css.replace(/:root\s*\{[^}]*\}/s, '')
+    it('all hex colour values live inside :root or [data-theme="dark"] blocks', () => {
+      // Strip both token definition blocks, then check the remainder has no hex colours.
+      // The dark-mode block is the only legitimate place outside :root for hex values.
+      const withoutTokenBlocks = css
+        .replace(/:root\s*\{[^}]*\}/s, '')
+        .replace(/\[data-theme=['"]dark['"]\]\s*\{[^}]*\}/s, '')
       const hexPattern = /#[0-9a-fA-F]{3,8}\b/g
-      const matches = withoutRoot.match(hexPattern) ?? []
+      const matches = withoutTokenBlocks.match(hexPattern) ?? []
       expect(matches).toHaveLength(0)
+    })
+
+    it('all colour tokens in :root have a matching override in [data-theme="dark"]', () => {
+      // Extract colour token names from :root block
+      const rootMatch = css.match(/:root\s*\{([^}]*)\}/s)
+      const rootBlock = rootMatch?.[1] ?? ''
+      const rootColourTokens = rootBlock.match(/--color-[\w-]+(?=:)/g) ?? []
+
+      // Extract colour token names from dark mode block
+      const darkMatch = css.match(/\[data-theme=['"]dark['"]\]\s*\{([^}]*)\}/s)
+      const darkBlock = darkMatch?.[1] ?? ''
+      const darkColourTokens = new Set(darkBlock.match(/--color-[\w-]+(?=:)/g) ?? [])
+
+      // Every colour token in :root must have a dark-mode override
+      for (const token of rootColourTokens) {
+        expect(darkColourTokens).toContain(token)
+      }
     })
   })
 })

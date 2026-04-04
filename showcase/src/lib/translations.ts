@@ -290,8 +290,7 @@ const en: Translations = {
   cardStaffCount: '8 staff',
   cardPlanLabel: 'Premium Plan',
   cardPlanBadge: 'Current Plan',
-  cardPlanDesc:
-    'Includes unlimited staff accounts, advanced analytics, and priority support.',
+  cardPlanDesc: 'Includes unlimited staff accounts, advanced analytics, and priority support.',
 
   badgeLabelGreen: 'Approved',
   badgeLabelAmber: 'Pending',
@@ -369,8 +368,7 @@ const zhHans: Translations = {
   sidebarComponentList: '组件列表', // TODO: zh-Hans review
   sidebarTagline: '自然・简单・可信', // TODO: zh-Hans review
 
-  headerSubtitle:
-    '面向日本中小企业SaaS产品的共享设计语言。\n支撑ShiftMate与FaxBridge的组件库。', // TODO: zh-Hans review
+  headerSubtitle: '面向日本中小企业SaaS产品的共享设计语言。\n支撑ShiftMate与FaxBridge的组件库。', // TODO: zh-Hans review
   statComponents: '组件', // TODO: zh-Hans review
   statTokens: '设计令牌', // TODO: zh-Hans review
   statProducts: '产品', // TODO: zh-Hans review
@@ -487,5 +485,3 @@ export const translations: Record<Locale, Translations> = {
   en,
   'zh-Hans': zhHans,
 }
-
-

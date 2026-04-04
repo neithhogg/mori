@@ -83,7 +83,7 @@ export function DataTable<T extends object>({
       {/* Right-edge fade gradient when content overflows horizontally */}
       {isOverflowing && !isEmpty && (
         <div
-          className="pointer-events-none absolute top-0 right-0 z-10 h-full w-8"
+          className="pointer-events-none absolute top-0 right-0 z-[var(--z-dropdown)] h-full w-8"
           style={{
             background: 'linear-gradient(to right, transparent, var(--color-surface-raised))',
           }}
@@ -102,10 +102,10 @@ export function DataTable<T extends object>({
                   className={cn(
                     'px-3 py-2.5 text-left text-xs font-semibold whitespace-nowrap',
                     // Sticky header
-                    'sticky top-0 z-20',
-                    // Sticky first column
-                    colIdx === 0 && 'sticky left-0 z-30',
-                    col.sortable && 'cursor-pointer select-none',
+                    'sticky top-0 z-[var(--z-sticky)]',
+                    // Sticky first column header needs to beat both sticky rows and sticky body cells
+                    colIdx === 0 && 'sticky left-0 z-[var(--z-overlay)]',
+                    col.sortable && 'cursor-pointer select-none'
                   )}
                   style={{
                     background: 'var(--color-surface)',
@@ -182,16 +182,14 @@ export function DataTable<T extends object>({
                       key={String(col.key)}
                       className={cn(
                         'px-3 py-2.5 whitespace-nowrap',
-                        colIdx === 0 && 'sticky left-0',
+                        colIdx === 0 && 'sticky left-0'
                       )}
                       style={{
                         color: 'var(--color-ink)',
                         background: 'var(--color-surface)',
                       }}
                     >
-                      {col.render
-                        ? col.render(row[col.key], row)
-                        : String(row[col.key] ?? '')}
+                      {col.render ? col.render(row[col.key], row) : String(row[col.key] ?? '')}
                     </td>
                   ))}
                 </tr>

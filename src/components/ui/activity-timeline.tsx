@@ -109,10 +109,7 @@ export function ActivityTimeline({
 
             {/* Content */}
             <div className="flex-1 pb-6">
-              <p
-                className="text-sm leading-snug"
-                style={{ color: 'var(--color-ink)' }}
-              >
+              <p className="text-sm leading-snug" style={{ color: 'var(--color-ink)' }}>
                 {event.description}
               </p>
               <time

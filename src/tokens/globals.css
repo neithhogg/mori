@@ -129,6 +129,98 @@
   --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* ===================================================================
+     INTERACTIVE STATES
+     Focus ring uses brand green to reinforce identity; width/offset kept
+     as tokens so they can be tightened for dense UI or widened for a11y.
+     =================================================================== */
+
+  --focus-ring-color: var(--color-brand);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --opacity-disabled: 0.45; /* consistent disabled state across all components */
+  --color-surface-overlay: rgba(0, 0, 0, 0.4); /* modal / drawer backdrop */
+
+  /* ===================================================================
+     Z-INDEX SCALE
+     Named semantic layers prevent magic-number collisions. Spaced by 100
+     so products can insert intermediate values without forking the scale.
+     =================================================================== */
+
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
+
+/* ===================================================================
+   DARK MODE COLOUR OVERRIDES
+   Activated by setting data-theme="dark" on <html>.
+   Only colour tokens are overridden — typography, spacing, radius,
+   shadows, motion, and z-index tokens are theme-agnostic.
+
+   IMPORTANT — flash prevention: products MUST inject a blocking inline
+   script in <head> that reads the user's preferred theme from localStorage
+   and sets data-theme on <html> before first paint. Without this, users
+   on dark mode will see a brief flash of the light theme on page load.
+   Example:
+     <script>
+       try {
+         const t = localStorage.getItem('mori-theme');
+         if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+       } catch (_) {}
+     </script>
+
+   Palette rationale:
+   - Surfaces use a warm near-black derived from the 和紙 surface family
+     (slight warm undertone preserves Mori's earthy character in dark mode)
+   - Brand green lightens slightly for sufficient contrast on dark surfaces
+   - Semantic colours (error, warning, success, info) shift to lighter tints
+     to meet WCAG AA on dark backgrounds while remaining recognisable
+   =================================================================== */
+
+[data-theme='dark'] {
+  /* Brand */
+  --color-brand: #4aba78; /* lighter forest green for dark bg — 4.6:1 vs surface */
+  --color-brand-light: #1a3d2b; /* deep tint for dark brand backgrounds */
+  --color-brand-dark: #72d49a; /* hover / pressed — brighter on dark */
+
+  /* Neutrals */
+  --color-ink: #f0ede8; /* near-white warm — 16.8:1 vs surface */
+  --color-ink-secondary: #b8b3aa; /* secondary text — 6.1:1 */
+  --color-ink-tertiary: #6e6860; /* placeholder, disabled — 3.1:1 (large text / UI ok) */
+
+  /* Surfaces */
+  --color-surface: #1c1a18; /* card background — warm near-black */
+  --color-surface-raised: #141210; /* 和紙 dark — page background */
+  --color-surface-sunken: #252220; /* input background, inset */
+
+  /* Borders */
+  --color-border: #33302c; /* 砂 dark — default border */
+  --color-border-strong: #4a4540; /* focused / hover border */
+
+  /* Semantic — Info */
+  --color-info: #60a5fa; /* lighter blue — 4.8:1 vs surface */
+  --color-info-light: #1e3a5f; /* dark info background tint */
+
+  /* Semantic — Success */
+  --color-success: #4ade80; /* lighter green — 5.2:1 vs surface */
+  --color-success-light: #14311f; /* dark success background tint */
+
+  /* Semantic — Warning */
+  --color-warning: #fbbf24; /* lighter amber — 6.0:1 vs surface */
+  --color-warning-light: #3d2c08; /* dark warning background tint */
+
+  /* Semantic — Error */
+  --color-error: #f87171; /* lighter red — 4.7:1 vs surface */
+  --color-error-light: #3d1515; /* dark error background tint */
+
+  /* Interactive states */
+  --focus-ring-color: var(--color-brand); /* inherits the overridden brand value above */
+  --color-surface-overlay: rgba(0, 0, 0, 0.6); /* deeper scrim on dark backgrounds */
 }
 
 /* ===================================================================

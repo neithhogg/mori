@@ -23,7 +23,9 @@ export function LocaleSwitcher(): JSX.Element {
           <button
             key={key}
             type="button"
-            onClick={() => { setLocale(key) }}
+            onClick={() => {
+              setLocale(key)
+            }}
             className={cn(
               'flex-1 rounded-md px-2 py-1 text-[0.625rem] font-semibold tracking-wide',
               'transition-all duration-150',
@@ -33,7 +35,11 @@ export function LocaleSwitcher(): JSX.Element {
             )}
             style={
               isActive
-                ? { background: 'var(--color-surface)', boxShadow: 'var(--shadow-sm)', color: 'var(--color-brand-dark)' }
+                ? {
+                    background: 'var(--color-surface)',
+                    boxShadow: 'var(--shadow-sm)',
+                    color: 'var(--color-brand-dark)',
+                  }
                 : undefined
             }
             aria-pressed={isActive}

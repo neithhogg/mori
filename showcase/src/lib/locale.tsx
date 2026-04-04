@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  type JSX,
-  type ReactNode,
-} from 'react'
+import { createContext, useContext, useState, useEffect, type JSX, type ReactNode } from 'react'
 
 export type Locale = 'ja' | 'en' | 'zh-Hans'
 
