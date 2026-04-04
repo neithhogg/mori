@@ -12,8 +12,8 @@ const BASE =
   'w-full h-10 px-3 bg-(--color-surface-sunken) border border-(--color-border) ' +
   'rounded-(--radius-md) text-sm text-(--color-ink) placeholder:text-(--color-ink-tertiary) ' +
   'transition-colors duration-200 ' +
-  'focus:outline-none focus:border-(--color-brand) focus:ring-1 focus:ring-(--color-brand) ' +
-  'disabled:opacity-50 disabled:cursor-not-allowed'
+  'focus:outline-none focus:border-(--focus-ring-color) focus:ring-[length:var(--focus-ring-width)] focus:ring-(--focus-ring-color) focus:ring-offset-[length:var(--focus-ring-offset)] ' +
+  'disabled:opacity-[var(--opacity-disabled)] disabled:cursor-not-allowed'
 
 const ERROR_CLASSES =
   'border-(--color-error) focus:border-(--color-error) focus:ring-(--color-error)'

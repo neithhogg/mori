@@ -97,11 +97,11 @@ export function Dialog(props: DialogProps): JSX.Element {
         background: 'transparent',
         overflow: 'visible',
       }}
-      className="z-50 m-0"
+      className="z-[var(--z-modal)] m-0"
     >
       {/* Dim overlay — clicking this closes the dialog (unless disabled) */}
       <div
-        className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+        className="fixed inset-0 bg-(--color-surface-overlay) backdrop-blur-sm z-[var(--z-overlay)]"
         aria-hidden="true"
         onClick={handleOverlayClick}
       />

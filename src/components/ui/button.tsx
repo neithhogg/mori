@@ -27,8 +27,8 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
 
 const BASE =
   'inline-flex items-center justify-center gap-2 font-medium rounded-(--radius-md) ' +
-  'transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ' +
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-brand)'
+  'transition-all duration-200 disabled:opacity-[var(--opacity-disabled)] disabled:cursor-not-allowed ' +
+  'focus-visible:outline-none focus-visible:ring-[length:var(--focus-ring-width)] focus-visible:ring-(--focus-ring-color) focus-visible:ring-offset-[length:var(--focus-ring-offset)]'
 
 export function Button({
   variant = 'primary',
