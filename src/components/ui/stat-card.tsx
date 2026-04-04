@@ -20,7 +20,12 @@ export interface StatCardProps {
   className?: string
 }
 
-function buildAriaLabel(label: string, value: string, format: StatCardFormat | undefined, delta: StatCardDelta | undefined): string {
+function buildAriaLabel(
+  label: string,
+  value: string,
+  format: StatCardFormat | undefined,
+  delta: StatCardDelta | undefined
+): string {
   let formattedValue = value
   if (format === 'currency') formattedValue = `¥${value}`
   if (format === 'percent') formattedValue = `${value}%`
@@ -46,8 +51,8 @@ export function StatCard({
     <div
       aria-label={ariaLabel}
       className={cn(
-        'bg-(--color-surface) border border-(--color-border) rounded-(--radius-lg) p-4 sm:p-5',
-        className,
+        'rounded-(--radius-lg) border border-(--color-border) bg-(--color-surface) p-4 sm:p-5',
+        className
       )}
     >
       {isLoading ? (
@@ -57,14 +62,11 @@ export function StatCard({
         </>
       ) : (
         <>
-          <p
-            className="mb-1 text-sm"
-            style={{ color: 'var(--color-ink-secondary)' }}
-          >
+          <p className="mb-1 text-sm" style={{ color: 'var(--color-ink-secondary)' }}>
             {label}
           </p>
           <p
-            className="text-2xl font-bold tabular-nums leading-none"
+            className="text-2xl leading-none font-bold tabular-nums"
             style={{ color: 'var(--color-ink)' }}
           >
             {value}
@@ -73,9 +75,7 @@ export function StatCard({
             <div
               className="mt-2 flex items-center gap-1 text-xs font-medium"
               style={{
-                color: delta.direction === 'up'
-                  ? 'var(--color-success)'
-                  : 'var(--color-error)',
+                color: delta.direction === 'up' ? 'var(--color-success)' : 'var(--color-error)',
               }}
             >
               {delta.direction === 'up' ? (

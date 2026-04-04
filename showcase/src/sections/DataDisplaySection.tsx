@@ -75,11 +75,7 @@ export function DataDisplaySection(): JSX.Element {
             delta={{ value: '-5.2%', direction: 'down' }}
             format="currency"
           />
-          <StatCard
-            label={t.statCardFaxLabel}
-            value="4"
-            format="count"
-          />
+          <StatCard label={t.statCardFaxLabel} value="4" format="count" />
         </div>
       </VarBlock>
 

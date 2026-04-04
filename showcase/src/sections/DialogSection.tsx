@@ -77,7 +77,9 @@ export function DialogSection(): JSX.Element {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { setDefaultOpen(true) }}
+              onClick={() => {
+                setDefaultOpen(true)
+              }}
             >
               {t.dialogLiveDemo}
             </Button>
@@ -85,11 +87,17 @@ export function DialogSection(): JSX.Element {
         </div>
         <Dialog
           open={defaultOpen}
-          onClose={() => { setDefaultOpen(false) }}
+          onClose={() => {
+            setDefaultOpen(false)
+          }}
           title={t.dialogDefaultTitle}
           subtitle={t.dialogDefaultSubtitle}
           footer={
-            <Button onClick={() => { setDefaultOpen(false) }}>
+            <Button
+              onClick={() => {
+                setDefaultOpen(false)
+              }}
+            >
               {t.dialogSave}
             </Button>
           }
@@ -117,7 +125,9 @@ export function DialogSection(): JSX.Element {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { setConfirmOpen(true) }}
+              onClick={() => {
+                setConfirmOpen(true)
+              }}
             >
               {t.dialogLiveDemo}
             </Button>
@@ -125,11 +135,15 @@ export function DialogSection(): JSX.Element {
         </div>
         <Dialog
           open={confirmOpen}
-          onClose={() => { setConfirmOpen(false) }}
+          onClose={() => {
+            setConfirmOpen(false)
+          }}
           variant="confirm"
           title={t.dialogConfirmTitle}
           actionLabel={t.dialogSave}
-          onAction={() => { setConfirmOpen(false) }}
+          onAction={() => {
+            setConfirmOpen(false)
+          }}
         >
           {t.dialogConfirmBody}
         </Dialog>
@@ -159,7 +173,9 @@ export function DialogSection(): JSX.Element {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { setDestructiveOpen(true) }}
+              onClick={() => {
+                setDestructiveOpen(true)
+              }}
             >
               {t.dialogLiveDemo}
             </Button>
@@ -167,12 +183,16 @@ export function DialogSection(): JSX.Element {
         </div>
         <Dialog
           open={destructiveOpen}
-          onClose={() => { setDestructiveOpen(false) }}
+          onClose={() => {
+            setDestructiveOpen(false)
+          }}
           variant="confirm"
           title={t.dialogDestructiveTitle}
           actionLabel={t.dialogDelete}
           destructive
-          onAction={() => { setDestructiveOpen(false) }}
+          onAction={() => {
+            setDestructiveOpen(false)
+          }}
         >
           {t.dialogDestructiveBody}
         </Dialog>
@@ -199,7 +219,9 @@ export function DialogSection(): JSX.Element {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { setLoadingOpen(true) }}
+              onClick={() => {
+                setLoadingOpen(true)
+              }}
             >
               {t.dialogLiveDemo}
             </Button>
@@ -207,12 +229,16 @@ export function DialogSection(): JSX.Element {
         </div>
         <Dialog
           open={loadingOpen}
-          onClose={() => { setLoadingOpen(false) }}
+          onClose={() => {
+            setLoadingOpen(false)
+          }}
           variant="confirm"
           title={t.dialogLoadingTitle}
           actionLabel={t.dialogUpdate}
           isLoading
-          onAction={() => { setLoadingOpen(false) }}
+          onAction={() => {
+            setLoadingOpen(false)
+          }}
         >
           {t.dialogLoadingBody}
         </Dialog>

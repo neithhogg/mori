@@ -187,7 +187,7 @@ describe('src/tokens/globals.css', () => {
       // Extract colour token names from :root block
       const rootMatch = css.match(/:root\s*\{([^}]*)\}/s)
       const rootBlock = rootMatch?.[1] ?? ''
-      const rootColourTokens = (rootBlock.match(/--color-[\w-]+(?=:)/g) ?? [])
+      const rootColourTokens = rootBlock.match(/--color-[\w-]+(?=:)/g) ?? []
 
       // Extract colour token names from dark mode block
       const darkMatch = css.match(/\[data-theme=['"]dark['"]\]\s*\{([^}]*)\}/s)

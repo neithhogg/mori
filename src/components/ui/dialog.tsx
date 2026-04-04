@@ -101,7 +101,7 @@ export function Dialog(props: DialogProps): JSX.Element {
     >
       {/* Dim overlay — clicking this closes the dialog (unless disabled) */}
       <div
-        className="fixed inset-0 bg-(--color-surface-overlay) backdrop-blur-sm z-[var(--z-overlay)]"
+        className="fixed inset-0 z-[var(--z-overlay)] bg-(--color-surface-overlay) backdrop-blur-sm"
         aria-hidden="true"
         onClick={handleOverlayClick}
       />
@@ -126,7 +126,7 @@ export function Dialog(props: DialogProps): JSX.Element {
         >
           {/* Header */}
           <div className="px-6 pt-6 pb-2">
-            <h2 id={titleId} className="font-(--font-semibold) text-lg text-(--color-ink)">
+            <h2 id={titleId} className="text-lg font-(--font-semibold) text-(--color-ink)">
               {title}
             </h2>
             {subtitle !== undefined && (

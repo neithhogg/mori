@@ -55,9 +55,9 @@ describe('DataTable', () => {
       const th = screen.getByText('名前').closest('th')
       if (!th) throw new Error('th not found')
       fireEvent.click(th)
-      const cells = screen.getAllByRole('cell').filter((c) =>
-        ['田中 花子', '山田 次郎', '鈴木 一郎'].includes(c.textContent ?? ''),
-      )
+      const cells = screen
+        .getAllByRole('cell')
+        .filter((c) => ['田中 花子', '山田 次郎', '鈴木 一郎'].includes(c.textContent ?? ''))
       expect(cells[0].textContent).toBe('山田 次郎') // ア行
     })
 
@@ -67,9 +67,9 @@ describe('DataTable', () => {
       if (!th) throw new Error('th not found')
       fireEvent.click(th) // asc: 3, 5, 7
       fireEvent.click(th) // desc: 7, 5, 3
-      const cells = screen.getAllByRole('cell').filter((c) =>
-        ['5', '3', '7'].includes(c.textContent ?? ''),
-      )
+      const cells = screen
+        .getAllByRole('cell')
+        .filter((c) => ['5', '3', '7'].includes(c.textContent ?? ''))
       expect(cells[0].textContent).toBe('7')
     })
 
@@ -101,13 +101,7 @@ describe('DataTable', () => {
     })
 
     it('shows custom emptyState slot when provided', () => {
-      render(
-        <DataTable
-          columns={columns}
-          data={[]}
-          emptyState={<span>カスタム空状態</span>}
-        />,
-      )
+      render(<DataTable columns={columns} data={[]} emptyState={<span>カスタム空状態</span>} />)
       expect(screen.getByText('カスタム空状態')).toBeInTheDocument()
     })
   })
@@ -122,7 +116,7 @@ describe('DataTable', () => {
 
     it('respects skeletonRowCount prop', () => {
       const { container } = render(
-        <DataTable columns={columns} data={data} isLoading skeletonRowCount={3} />,
+        <DataTable columns={columns} data={data} isLoading skeletonRowCount={3} />
       )
       const skeletons = container.querySelectorAll('.animate-pulse')
       expect(skeletons.length).toBe(3 * columns.length)

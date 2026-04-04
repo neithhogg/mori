@@ -365,13 +365,13 @@ Single-metric display tile for KPI summaries (出勤数, 売上, 未処理件数
 
 ```tsx
 interface StatCardProps {
-  label: string          // e.g. "本日の出勤数"
-  value: string          // pre-formatted by caller, e.g. "12" or "198,000"
+  label: string // e.g. "本日の出勤数"
+  value: string // pre-formatted by caller, e.g. "12" or "198,000"
   delta?: {
-    value: string        // e.g. "+3" or "-5.2%"
+    value: string // e.g. "+3" or "-5.2%"
     direction: 'up' | 'down'
   }
-  format?: 'currency' | 'count' | 'percent'  // ARIA hint only — does not format value
+  format?: 'currency' | 'count' | 'percent' // ARIA hint only — does not format value
   isLoading?: boolean
 }
 ```
@@ -406,8 +406,8 @@ interface DataTableProps<T extends object> {
   columns: ColumnDef<T>[]
   data: T[]
   isLoading?: boolean
-  skeletonRowCount?: number   // default 5
-  emptyState?: ReactNode      // falls back to "まだデータがありません"
+  skeletonRowCount?: number // default 5
+  emptyState?: ReactNode // falls back to "まだデータがありません"
 }
 ```
 
@@ -434,9 +434,9 @@ interface TimelineEvent {
 
 interface ActivityTimelineProps {
   events: TimelineEvent[]
-  order?: 'desc' | 'asc'   // default 'desc' (newest first)
+  order?: 'desc' | 'asc' // default 'desc' (newest first)
   isLoading?: boolean
-  skeletonCount?: number    // default 4
+  skeletonCount?: number // default 4
 }
 ```
 

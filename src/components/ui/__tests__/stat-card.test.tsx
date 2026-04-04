@@ -20,17 +20,13 @@ describe('StatCard', () => {
 
   describe('delta', () => {
     it('shows positive delta with success colour', () => {
-      render(
-        <StatCard label="出勤数" value="12" delta={{ value: '+3', direction: 'up' }} />,
-      )
+      render(<StatCard label="出勤数" value="12" delta={{ value: '+3', direction: 'up' }} />)
       const delta = screen.getByText('+3')
       expect(delta.closest('div')?.style.color).toContain('var(--color-success)')
     })
 
     it('shows negative delta with error colour', () => {
-      render(
-        <StatCard label="出勤数" value="9" delta={{ value: '-2', direction: 'down' }} />,
-      )
+      render(<StatCard label="出勤数" value="9" delta={{ value: '-2', direction: 'down' }} />)
       const delta = screen.getByText('-2')
       expect(delta.closest('div')?.style.color).toContain('var(--color-error)')
     })
@@ -73,13 +69,7 @@ describe('StatCard', () => {
     })
 
     it('includes delta direction in aria-label', () => {
-      render(
-        <StatCard
-          label="出勤数"
-          value="12"
-          delta={{ value: '+3', direction: 'up' }}
-        />,
-      )
+      render(<StatCard label="出勤数" value="12" delta={{ value: '+3', direction: 'up' }} />)
       expect(screen.getByLabelText(/増加/)).toBeInTheDocument()
     })
   })

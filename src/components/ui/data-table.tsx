@@ -105,7 +105,7 @@ export function DataTable<T extends object>({
                     'sticky top-0 z-[var(--z-sticky)]',
                     // Sticky first column header needs to beat both sticky rows and sticky body cells
                     colIdx === 0 && 'sticky left-0 z-[var(--z-overlay)]',
-                    col.sortable && 'cursor-pointer select-none',
+                    col.sortable && 'cursor-pointer select-none'
                   )}
                   style={{
                     background: 'var(--color-surface)',
@@ -182,16 +182,14 @@ export function DataTable<T extends object>({
                       key={String(col.key)}
                       className={cn(
                         'px-3 py-2.5 whitespace-nowrap',
-                        colIdx === 0 && 'sticky left-0',
+                        colIdx === 0 && 'sticky left-0'
                       )}
                       style={{
                         color: 'var(--color-ink)',
                         background: 'var(--color-surface)',
                       }}
                     >
-                      {col.render
-                        ? col.render(row[col.key], row)
-                        : String(row[col.key] ?? '')}
+                      {col.render ? col.render(row[col.key], row) : String(row[col.key] ?? '')}
                     </td>
                   ))}
                 </tr>

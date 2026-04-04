@@ -34,7 +34,7 @@ export function Input({
       {label !== undefined && (
         <label
           htmlFor={inputId}
-          className="font-(--font-medium) text-sm text-(--color-ink-secondary)"
+          className="text-sm font-(--font-medium) text-(--color-ink-secondary)"
         >
           {label}
         </label>
